@@ -1,252 +1,648 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nichal Zaki — Book Designer & Ebook Specialist</title>
-<meta name="description" content="Professional book design, typesetting, and ebook production for publishers and authors worldwide. Based in Semarang, Indonesia.">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Nichal Zaki — Book Designer & Type Creator</title>
+<meta name="description" content="Book designer, layouter, cover designer, and type creator based in Semarang, Indonesia. 300+ published titles, 12+ years experience.">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#fafafa;
-  --surface:#fff;
-  --ink:#111;
-  --mid:#555;
-  --muted:#999;
-  --border:#e8e8e8;
-  --accent:#c05f3c;
-  --accent-bg:#fdf3ef;
-  --serif:'Lora',Georgia,serif;
-  --sans:'Inter',system-ui,sans-serif;
-  --radius:10px;
-  --max:720px;
-}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
 
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(250,250,250,0.9);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-  height:56px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 1.5rem;
-}
-.nav-logo{font-family:var(--serif);font-size:17px;color:var(--ink);text-decoration:none;font-style:italic}
-.nav-links{display:flex;gap:1.5rem;list-style:none}
-.nav-links a{font-size:13px;font-weight:400;color:var(--mid);text-decoration:none;transition:color .2s}
-.nav-links a:hover{color:var(--ink)}
+/* === RESET & VARIABLES === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* SECTIONS */
-section{scroll-margin-top:56px}
-.container{max-width:var(--max);margin:0 auto;padding:0 1.5rem}
+:root {
+  --bg: #f8f6f2;
+  --bg2: #f0ede8;
+  --surface: #ffffff;
+  --ink: #1a1714;
+  --ink2: #3d3733;
+  --mid: #6b6560;
+  --muted: #a09890;
+  --border: #e5e0d8;
+  --accent: #c05f3c;
+  --accent-light: #fdf1ec;
+  --serif: 'Lora', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+  --radius: 12px;
+  --max: 1100px;
+  --nav-h: 60px;
+  --trans: 0.25s ease;
+}
 
-/* HERO */
-#hero{padding:calc(56px + 5rem) 0 5rem}
-.hero-inner{max-width:var(--max);margin:0 auto;padding:0 1.5rem}
-.hero-tag{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:12px;font-weight:500;letter-spacing:.06em;
-  color:var(--accent);margin-bottom:1.5rem;
+[data-theme="dark"] {
+  --bg: #131110;
+  --bg2: #1a1815;
+  --surface: #1e1c19;
+  --ink: #f0ebe3;
+  --ink2: #c8c0b5;
+  --mid: #948d84;
+  --muted: #5e5850;
+  --border: #2d2a26;
+  --accent: #d4724f;
+  --accent-light: #2a1e18;
 }
-.hero-tag span{width:20px;height:1px;background:var(--accent);display:block}
-h1{
-  font-family:var(--serif);
-  font-size:clamp(2.4rem,6vw,3.6rem);
-  font-weight:400;line-height:1.15;
-  color:var(--ink);margin-bottom:1.25rem;
-}
-h1 em{font-style:italic;color:var(--accent)}
-.hero-sub{font-size:16px;color:var(--mid);line-height:1.8;max-width:480px;margin-bottom:2.5rem}
-.hero-actions{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--ink);color:#fff;
-  font-size:13px;font-weight:500;letter-spacing:.04em;
-  padding:12px 24px;border-radius:var(--radius);
-  text-decoration:none;transition:opacity .2s,transform .15s;
-  border:none;cursor:pointer;font-family:var(--sans);
-}
-.btn-primary:hover{opacity:.85;transform:translateY(-1px)}
-.hero-link{font-size:13px;color:var(--mid);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-.hero-link:hover{color:var(--ink)}
-.hero-stats{
-  display:flex;gap:2.5rem;
-  margin-top:3.5rem;padding-top:2rem;
-  border-top:1px solid var(--border);
-  flex-wrap:wrap;
-}
-.stat-num{font-family:var(--serif);font-size:1.8rem;color:var(--ink);font-weight:500;line-height:1}
-.stat-label{font-size:12px;color:var(--muted);margin-top:4px}
 
-/* SERVICES */
-#services{padding:5rem 0;background:var(--surface);border-top:1px solid var(--border)}
-.sec-label{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
-.sec-title{font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:400;color:var(--ink);margin-bottom:.5rem}
-.sec-sub{font-size:15px;color:var(--mid);line-height:1.7;margin-bottom:3rem}
-.services-list{display:flex;flex-direction:column;gap:1px;background:var(--border)}
-.svc{
-  background:var(--surface);
-  padding:2rem;
-  display:grid;grid-template-columns:1fr auto;gap:1rem;
-  align-items:start;
-  transition:background .2s;
-  cursor:default;
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--trans), color var(--trans);
 }
-.svc:hover{background:var(--bg)}
-.svc-num{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.08em;margin-bottom:.6rem}
-.svc-title{font-family:var(--serif);font-size:18px;color:var(--ink);margin-bottom:.5rem;font-weight:400}
-.svc-desc{font-size:13px;color:var(--mid);line-height:1.7;margin-bottom:1rem}
-.svc-tags{display:flex;flex-wrap:wrap;gap:6px}
-.svc-tag{
-  font-size:11px;color:var(--mid);
-  border:1px solid var(--border);
-  padding:3px 10px;border-radius:20px;
-}
-.svc-price{text-align:right;white-space:nowrap;}
-.svc-price .price-from{font-size:11px;color:var(--muted);display:block;margin-bottom:2px}
-.svc-price .price-num{font-family:var(--serif);font-size:20px;color:var(--ink);font-weight:500}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
 
-/* PORTFOLIO */
-#portfolio{padding:5rem 0;background:var(--bg);border-top:1px solid var(--border)}
-.works-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1rem;
+/* === NAV === */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+  background: rgba(248, 246, 242, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--trans), border-color var(--trans);
 }
-.work-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:1.5rem;
-  transition:border-color .2s,transform .2s;
+[data-theme="dark"] nav { background: rgba(19, 17, 16, 0.88); }
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 18px; font-style: italic;
+  color: var(--ink); letter-spacing: -0.01em;
 }
-.work-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.work-card.featured{grid-column:span 2}
-.work-cat{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
-.work-title{font-family:var(--serif);font-size:16px;color:var(--ink);line-height:1.35;margin-bottom:.5rem;font-weight:400}
-.work-meta{font-size:12px;color:var(--muted);line-height:1.6}
-.work-icon{font-size:28px;margin-bottom:.75rem;display:block}
+.nav-logo em { font-style: italic; color: var(--accent); }
+.nav-center {
+  display: flex; gap: 2rem; list-style: none;
+  position: absolute; left: 50%; transform: translateX(-50%);
+}
+.nav-center a {
+  font-size: 13px; font-weight: 400; color: var(--mid);
+  transition: color var(--trans);
+  position: relative; padding-bottom: 2px;
+}
+.nav-center a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+  height: 1px; background: var(--accent);
+  transform: scaleX(0); transition: transform var(--trans);
+  transform-origin: center;
+}
+.nav-center a:hover, .nav-center a.active { color: var(--ink); }
+.nav-center a:hover::after, .nav-center a.active::after { transform: scaleX(1); }
+.nav-right { display: flex; align-items: center; gap: 0.75rem; }
+.theme-toggle {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border); border-radius: 50%;
+  background: var(--surface); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; transition: all var(--trans); color: var(--mid);
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.btn-nav {
+  font-size: 12px; font-weight: 500; color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 7px 16px; border-radius: 20px;
+  transition: all var(--trans); cursor: pointer;
+  background: none; font-family: var(--sans); letter-spacing: 0.03em;
+}
+.btn-nav:hover { background: var(--accent); color: #fff; }
 
-/* ABOUT */
-#about{padding:5rem 0;background:var(--surface);border-top:1px solid var(--border)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.about-copy p{font-size:15px;color:var(--mid);line-height:1.85;margin-bottom:1rem}
-.skills{display:flex;flex-wrap:wrap;gap:6px;margin-top:1.5rem}
-.skill{font-size:12px;color:var(--mid);background:var(--bg);border:1px solid var(--border);padding:5px 12px;border-radius:20px}
-.about-card{
-  background:var(--ink);
-  border-radius:var(--radius);
-  padding:2.5rem;
-  text-align:center;
+/* === LAYOUT === */
+section { scroll-margin-top: var(--nav-h); }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+.sec-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--accent);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 0.75rem;
 }
-.about-avatar{
-  width:72px;height:72px;border-radius:50%;
-  background:rgba(255,255,255,.1);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--serif);font-size:24px;color:#fff;font-style:italic;
-  margin:0 auto 1.5rem;
-  border:1px solid rgba(255,255,255,.15);
+.sec-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400; color: var(--ink); line-height: 1.2;
 }
-.about-name{font-family:var(--serif);font-size:18px;color:#fff;margin-bottom:4px;font-weight:400}
-.about-role{font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.06em;margin-bottom:1.5rem}
-.about-divider{width:32px;height:1px;background:var(--accent);margin:0 auto 1.5rem}
-.about-pub{font-size:11px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.12em}
+.sec-sub { font-size: 15px; color: var(--mid); line-height: 1.8; margin-top: 0.5rem; }
 
-/* CONTACT */
-#contact{padding:5rem 0;background:var(--bg);border-top:1px solid var(--border)}
-.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:start}
-.contact-info{margin-top:2rem;display:flex;flex-direction:column;gap:.75rem}
-.cinfo{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mid)}
-.cinfo-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
-.form{display:flex;flex-direction:column;gap:.875rem}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.875rem}
-.field{display:flex;flex-direction:column;gap:5px}
-.field label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.field input,.field select,.field textarea{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:11px 14px;
-  font-family:var(--sans);font-size:14px;color:var(--ink);
-  outline:none;transition:border-color .2s;width:100%;
+/* === HERO === */
+#hero {
+  padding-top: var(--nav-h);
+  min-height: 100vh;
+  display: flex; align-items: center;
+  overflow: hidden; position: relative;
 }
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
-.field input::placeholder,.field textarea::placeholder{color:var(--muted)}
-.field select{color:var(--mid);-webkit-appearance:none;cursor:pointer}
-.field textarea{resize:vertical;min-height:110px;line-height:1.6}
-.form-note{font-size:12px;color:var(--muted);line-height:1.6}
-.btn-wa{
-  display:inline-flex;align-items:center;gap:10px;
-  background:#25D366;color:#fff;
-  font-size:13px;font-weight:500;
-  padding:13px 24px;border-radius:var(--radius);
-  border:none;cursor:pointer;font-family:var(--sans);
-  transition:opacity .2s,transform .15s;width:100%;justify-content:center;
+.hero-inner {
+  max-width: var(--max); margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center; width: 100%;
 }
-.btn-wa:hover{opacity:.88;transform:translateY(-1px)}
-.wa-icon{width:18px;height:18px;flex-shrink:0}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+.hero-eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  font-weight: 400; line-height: 1.1;
+  color: var(--ink); margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+h1 em { font-style: italic; color: var(--accent); }
+.hero-desc {
+  font-size: 16px; color: var(--mid);
+  line-height: 1.85; max-width: 440px;
+  margin-bottom: 2.5rem;
+}
+.hero-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--ink); color: var(--bg);
+  font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+  padding: 13px 26px; border-radius: 100px;
+  border: none; cursor: pointer; font-family: var(--sans);
+  transition: opacity var(--trans), transform var(--trans);
+}
+.btn-primary:hover { opacity: 0.82; transform: translateY(-2px); }
+.btn-ghost {
+  font-size: 13px; color: var(--mid);
+  border: 1px solid var(--border);
+  padding: 13px 26px; border-radius: 100px;
+  cursor: pointer; transition: all var(--trans);
+  background: none; font-family: var(--sans);
+}
+.btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-top: 3.5rem;
+  padding-top: 2rem; border-top: 1px solid var(--border);
+}
+.stat-num {
+  font-family: var(--serif);
+  font-size: 2rem; color: var(--ink);
+  font-weight: 500; line-height: 1;
+}
+.stat-label { font-size: 12px; color: var(--muted); margin-top: 5px; }
 
-/* FOOTER */
-footer{
-  padding:2rem 1.5rem;
-  border-top:1px solid var(--border);
-  background:var(--surface);
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:1rem;
+/* BOOKSHELF CSS ART */
+.hero-visual {
+  position: relative;
+  display: flex; align-items: flex-end;
+  justify-content: center; height: 380px;
 }
-.footer-logo{font-family:var(--serif);font-size:14px;color:var(--mid);font-style:italic}
-.footer-copy{font-size:12px;color:var(--muted)}
+.hero-letter {
+  position: absolute;
+  font-family: var(--serif); font-style: italic;
+  color: var(--accent); opacity: 0.06;
+  line-height: 1; user-select: none; pointer-events: none;
+}
+.hl1 { font-size: 260px; top: -20px; right: -10px; }
+.hl2 { font-size: 160px; bottom: 30px; left: -20px; }
 
-/* MOBILE */
-@media(max-width:600px){
-  nav{padding:0 1rem}
-  .nav-links{gap:1rem}
-  .nav-links a{font-size:12px}
-  h1{font-size:2.2rem}
-  .hero-stats{gap:1.5rem}
-  .works-grid{grid-template-columns:1fr}
-  .work-card.featured{grid-column:span 1}
-  .about-grid{grid-template-columns:1fr}
-  .about-card{display:none}
-  .contact-grid{grid-template-columns:1fr}
-  .contact-info{margin-bottom:.5rem}
-  .form-row{grid-template-columns:1fr}
-  .svc{grid-template-columns:1fr}
-  .svc-price{text-align:left}
-  footer{flex-direction:column;align-items:flex-start;gap:.5rem}
+.bookshelf {
+  display: flex; align-items: flex-end; gap: 5px;
+  position: relative;
+}
+.bookshelf::after {
+  content: '';
+  position: absolute; bottom: -10px; left: -24px; right: -24px;
+  height: 10px; background: var(--border); border-radius: 2px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.book {
+  border-radius: 3px 6px 6px 3px;
+  position: relative; cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 2px 4px 14px rgba(0,0,0,0.15), inset -4px 0 10px rgba(0,0,0,0.08);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.book::before {
+  content: ''; position: absolute;
+  left: 0; top: 0; bottom: 0; width: 7px;
+  background: rgba(0,0,0,0.15); border-radius: 3px 0 0 3px;
+}
+.book:hover { transform: translateY(-20px); }
+.book-title {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-family: var(--serif); font-size: 9px;
+  color: rgba(255,255,255,0.65);
+  padding: 0 6px; text-align: center;
+  line-height: 1.2; font-style: italic;
+  letter-spacing: 0.03em;
+}
+.b1 { width: 40px; height: 255px; background: linear-gradient(160deg, #7a4f2e, #9e6843); }
+.b2 { width: 36px; height: 295px; background: linear-gradient(160deg, #354d44, #456358); }
+.b3 { width: 50px; height: 235px; background: linear-gradient(160deg, #5e4268, #7a5888); }
+.b4 { width: 34px; height: 318px; background: linear-gradient(160deg, #b8572e, #cc7250); }
+.b5 { width: 42px; height: 272px; background: linear-gradient(160deg, #404f65, #526478); }
+.b6 { width: 38px; height: 195px; background: linear-gradient(160deg, #6e602e, #8c7a3e); }
+.b7 { width: 32px; height: 335px; background: linear-gradient(160deg, #50363a, #6e4e52); }
+.b8 { width: 46px; height: 248px; background: linear-gradient(160deg, #374634, #4a5f45); }
+
+/* === MARQUEE === */
+.marquee-wrap {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  padding: 13px 0; overflow: hidden;
+}
+.marquee-track {
+  display: flex; animation: marquee 32s linear infinite;
+  white-space: nowrap;
+}
+.marquee-item {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 0 2rem;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+}
+.marquee-item::after { content: '✦'; color: var(--accent); font-size: 7px; }
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* === SERVICES === */
+#services { padding: 6rem 0; background: var(--surface); border-top: 1px solid var(--border); }
+.services-header { margin-bottom: 3rem; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+}
+.svc-card {
+  background: var(--surface); padding: 2rem;
+  transition: background var(--trans); position: relative;
+}
+.svc-card:hover { background: var(--bg); }
+.svc-num {
+  font-size: 11px; color: var(--muted); font-weight: 500;
+  letter-spacing: 0.1em; margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.svc-num::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.svc-icon {
+  width: 40px; height: 40px; background: var(--accent-light);
+  border-radius: 10px; display: flex; align-items: center;
+  justify-content: center; margin-bottom: 1rem; font-size: 18px;
+}
+.svc-title {
+  font-family: var(--serif); font-size: 17px;
+  font-weight: 400; color: var(--ink); margin-bottom: 0.5rem;
+}
+.svc-desc { font-size: 13px; color: var(--mid); line-height: 1.75; margin-bottom: 1.25rem; }
+.svc-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.svc-tag {
+  font-size: 11px; color: var(--mid);
+  border: 1px solid var(--border); padding: 3px 10px;
+  border-radius: 20px; transition: all var(--trans);
+}
+.svc-card:hover .svc-tag { border-color: var(--accent); color: var(--accent); }
+.svc-price {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  text-align: right;
+}
+.svc-price small { font-size: 10px; color: var(--muted); display: block; }
+.svc-price strong {
+  font-family: var(--serif); font-size: 18px;
+  color: var(--accent); font-weight: 500;
+}
+
+/* === PORTFOLIO === */
+#portfolio { padding: 6rem 0; background: var(--bg); border-top: 1px solid var(--border); }
+.portfolio-header { margin-bottom: 3rem; }
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+.work-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  transition: transform 0.3s ease, border-color var(--trans), box-shadow var(--trans);
+  display: block; color: inherit;
+}
+.work-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+.wc-featured { grid-column: span 7; }
+.wc-side    { grid-column: span 5; }
+.wc-third   { grid-column: span 4; }
+
+.work-cover {
+  height: 180px; position: relative;
+  overflow: hidden; display: flex; align-items: center; justify-content: center;
+}
+.wc-featured .work-cover { height: 220px; }
+.cc1 { background: linear-gradient(135deg, #192638 0%, #2b3f56 100%); }
+.cc2 { background: linear-gradient(135deg, #291608 0%, #4d2e14 100%); }
+.cc3 { background: linear-gradient(135deg, #17311f 0%, #275437 100%); }
+.cc4 { background: linear-gradient(135deg, #321828 0%, #5c2e46 100%); }
+.cc5 { background: linear-gradient(135deg, #231f12 0%, #413920 100%); }
+
+.cover-book {
+  width: 82px; height: 112px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px 7px 7px 3px;
+  box-shadow: 5px 8px 24px rgba(0,0,0,0.35), inset -3px 0 8px rgba(0,0,0,0.2);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.wc-featured .cover-book { width: 104px; height: 144px; }
+.cover-book::before {
+  content: ''; position: absolute;
+  left: 0; top: 0; bottom: 0; width: 9px;
+  background: rgba(0,0,0,0.18);
+}
+.cover-glyph {
+  font-family: var(--serif); font-style: italic;
+  font-size: 40px; color: var(--accent); opacity: 0.7; line-height: 1;
+}
+.wc-featured .cover-glyph { font-size: 54px; }
+
+.work-info { padding: 1.25rem 1.5rem; }
+.work-cat {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
+}
+.work-title {
+  font-family: var(--serif); font-size: 15px;
+  color: var(--ink); line-height: 1.4; margin-bottom: 0.4rem; font-weight: 400;
+}
+.wc-featured .work-title { font-size: 18px; }
+.work-meta { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* === TYPE SPECIMEN === */
+#type {
+  padding: 6rem 0;
+  background: var(--ink);
+  border-top: 1px solid var(--border);
+}
+[data-theme="dark"] #type { background: var(--bg2); }
+.type-inner { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+.type-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--accent);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 2.5rem;
+}
+.type-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+.type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.type-display {
+  font-family: var(--serif);
+  font-size: clamp(4.5rem, 10vw, 9rem);
+  font-weight: 400; line-height: 1; letter-spacing: -0.03em;
+  color: rgba(255,255,255,0.9); margin-bottom: 1rem;
+}
+[data-theme="dark"] .type-display { color: var(--ink); }
+.type-display em { font-style: italic; color: var(--accent); }
+.type-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 2.5rem; }
+[data-theme="dark"] .type-sub { color: var(--muted); }
+.type-alpha {
+  font-family: var(--serif); font-size: 17px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.12em; line-height: 2.2; font-style: italic;
+}
+[data-theme="dark"] .type-alpha { color: var(--muted); }
+
+.type-cards { display: flex; flex-direction: column; gap: 1.25rem; }
+.type-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--radius); padding: 1.75rem;
+  transition: background var(--trans);
+}
+[data-theme="dark"] .type-card { background: var(--surface); border-color: var(--border); }
+.type-card:hover { background: rgba(255,255,255,0.08); }
+[data-theme="dark"] .type-card:hover { background: var(--bg); }
+.type-card-name {
+  font-family: var(--serif); font-size: 19px;
+  color: rgba(255,255,255,0.9); font-style: italic; margin-bottom: 0.35rem;
+}
+[data-theme="dark"] .type-card-name { color: var(--ink); }
+.type-card-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.7; }
+[data-theme="dark"] .type-card-desc { color: var(--mid); }
+.type-sample {
+  font-family: var(--serif); font-size: 30px; font-style: italic;
+  color: var(--accent); margin-top: 0.75rem; line-height: 1.2;
+}
+.type-glyphs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 0.75rem; }
+.glyph-box {
+  font-family: var(--serif); font-size: 22px; font-style: italic;
+  color: rgba(255,255,255,0.55);
+  width: 40px; height: 40px;
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--trans); cursor: default;
+}
+[data-theme="dark"] .glyph-box { color: var(--mid); border-color: var(--border); }
+.glyph-box:hover { color: var(--accent); border-color: var(--accent); background: rgba(255,255,255,0.04); }
+
+/* === ABOUT === */
+#about { padding: 6rem 0; background: var(--surface); border-top: 1px solid var(--border); }
+.about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: center; }
+.about-copy p { font-size: 15px; color: var(--mid); line-height: 1.9; margin-bottom: 1rem; }
+.skills-group { margin-top: 2rem; }
+.skills-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem;
+}
+.skills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.25rem; }
+.skill {
+  font-size: 12px; color: var(--mid);
+  background: var(--bg); border: 1px solid var(--border);
+  padding: 5px 12px; border-radius: 20px; transition: all var(--trans);
+}
+.skill:hover { border-color: var(--accent); color: var(--accent); }
+
+.about-card {
+  background: var(--ink); border-radius: 20px;
+  padding: 2.5rem 2rem; text-align: center; position: relative; overflow: hidden;
+}
+[data-theme="dark"] .about-card { background: var(--bg2); border: 1px solid var(--border); }
+.about-card::before {
+  content: 'Aa'; position: absolute;
+  top: -24px; right: -12px;
+  font-family: var(--serif); font-style: italic;
+  font-size: 130px; color: rgba(255,255,255,0.04);
+  line-height: 1; pointer-events: none;
+}
+.about-avatar {
+  width: 88px; height: 88px; border-radius: 50%;
+  overflow: hidden; margin: 0 auto 1.5rem;
+  border: 3px solid rgba(255,255,255,0.15);
+}
+[data-theme="dark"] .about-avatar { border-color: var(--border); }
+.about-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.about-name {
+  font-family: var(--serif); font-size: 20px;
+  color: #fff; font-weight: 400; margin-bottom: 4px;
+}
+[data-theme="dark"] .about-name { color: var(--ink); }
+.about-role { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; }
+[data-theme="dark"] .about-role { color: var(--muted); }
+.about-divider { width: 36px; height: 1px; background: var(--accent); margin: 1.5rem auto; }
+.about-badges { display: flex; flex-direction: column; gap: 8px; }
+.about-badge {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px; padding: 10px 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+[data-theme="dark"] .about-badge { background: var(--surface); border-color: var(--border); }
+.badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.badge-text { font-size: 12px; color: rgba(255,255,255,0.5); text-align: left; }
+[data-theme="dark"] .badge-text { color: var(--mid); }
+
+/* === CONTACT === */
+#contact { padding: 6rem 0; background: var(--bg); border-top: 1px solid var(--border); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; margin-top: 2.5rem; }
+.contact-meta { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+.cmeta-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--mid); }
+.cmeta-icon {
+  width: 34px; height: 34px; border-radius: 9px;
+  background: var(--accent-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; flex-shrink: 0;
+}
+.form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+}
+.field input, .field select, .field textarea {
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 10px; padding: 12px 16px;
+  font-family: var(--sans); font-size: 14px; color: var(--ink);
+  outline: none; transition: border-color var(--trans); width: 100%;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+.field input::placeholder, .field textarea::placeholder { color: var(--muted); }
+.field select { color: var(--mid); -webkit-appearance: none; cursor: pointer; }
+.field textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.form-note { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 10px; justify-content: center;
+  background: #25D366; color: #fff;
+  font-size: 13px; font-weight: 500;
+  padding: 14px 24px; border-radius: 100px;
+  border: none; cursor: pointer; font-family: var(--sans);
+  transition: opacity var(--trans), transform var(--trans);
+  width: 100%; letter-spacing: 0.02em;
+}
+.btn-wa:hover { opacity: 0.88; transform: translateY(-2px); }
+.wa-icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+/* === FOOTER === */
+footer {
+  padding: 2.5rem 2rem;
+  border-top: 1px solid var(--border); background: var(--surface);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-family: var(--serif); font-size: 16px; color: var(--ink); font-style: italic; }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 12px; color: var(--muted); transition: color var(--trans); }
+.footer-links a:hover { color: var(--ink); }
+.footer-copy { font-size: 12px; color: var(--muted); }
+
+/* === SCROLL ANIMATIONS === */
+.fade-up {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* === MOBILE === */
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .works-grid { grid-template-columns: 1fr 1fr; }
+  .wc-featured, .wc-side, .wc-third { grid-column: span 1; }
+  .type-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+@media (max-width: 680px) {
+  nav { padding: 0 1rem; }
+  .nav-center { display: none; }
+  .hero-inner { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.5rem; }
+  .hero-visual { height: 240px; }
+  .bookshelf { transform: scale(0.72); transform-origin: center bottom; }
+  h1 { font-size: 2.6rem; }
+  .hero-stats { gap: 1.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .works-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-card { display: none; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .container { padding: 0 1.25rem; }
+  #hero, #services, #portfolio, #type, #about, #contact { padding-top: 4rem; padding-bottom: 4rem; }
+}
+@media (max-width: 420px) {
+  .hero-stats { flex-wrap: wrap; gap: 1rem; }
+  .hero-visual { display: none; }
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">nichalzaki</a>
-  <ul class="nav-links">
+  <a class="nav-logo" href="#">nichal<em>zaki</em></a>
+  <ul class="nav-center">
     <li><a href="#services">Services</a></li>
     <li><a href="#portfolio">Work</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">☀</button>
+    <button class="btn-nav" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire me</button>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-tag"><span></span>Book Designer & Ebook Specialist</div>
-    <h1>Books designed<br>to <em>last.</em></h1>
-    <p class="hero-sub">Professional interior design, typesetting, and ebook production for publishers and authors worldwide.</p>
-    <div class="hero-actions">
-      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Start a project →</button>
-      <span class="hero-link" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">View my work</span>
+    <div>
+      <div class="hero-eyebrow">Book Designer & Type Creator</div>
+      <h1>Crafting books<br>that <em>endure.</em></h1>
+      <p class="hero-desc">Interior layout, cover design, ebook production, and custom typefaces — from manuscript to platform-ready files.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Start a project →</button>
+        <button class="btn-ghost" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">View work</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">300+</div><div class="stat-label">Books published</div></div>
+        <div><div class="stat-num">12+</div><div class="stat-label">Years of craft</div></div>
+        <div><div class="stat-num">5+</div><div class="stat-label">Typefaces made</div></div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div><div class="stat-num">300+</div><div class="stat-label">Books published</div></div>
-      <div><div class="stat-num">12+</div><div class="stat-label">Years experience</div></div>
-      <div><div class="stat-num">3</div><div class="stat-label">Output formats</div></div>
+    <div class="hero-visual">
+      <div class="hero-letter hl1">A</div>
+      <div class="hero-letter hl2">g</div>
+      <div class="bookshelf">
+        <div class="book b1"><span class="book-title">Fiqh Studies</span></div>
+        <div class="book b2"><span class="book-title">Language Arts</span></div>
+        <div class="book b3"><span class="book-title">Bahasa Indo</span></div>
+        <div class="book b4"><span class="book-title">Alinea Press</span></div>
+        <div class="book b5"><span class="book-title">Czech Cuisine</span></div>
+        <div class="book b6"><span class="book-title">Biology</span></div>
+        <div class="book b7"><span class="book-title">Type Design</span></div>
+        <div class="book b8"><span class="book-title">Mandarin</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -254,58 +650,83 @@ footer{
 <!-- SERVICES -->
 <section id="services">
   <div class="container">
-    <div class="sec-label">What I offer</div>
-    <h2 class="sec-title">Services</h2>
-    <p class="sec-sub">From raw manuscript to polished, platform-ready files.</p>
-    <div class="services-list">
-      <div class="svc">
-        <div>
-          <div class="svc-num">01</div>
-          <div class="svc-title">Interior Book Design</div>
-          <div class="svc-desc">Typesetting and layout for print — scholarly, literary, or trade. Precision typography using InDesign with GREP automation.</div>
-          <div class="svc-tags">
-            <span class="svc-tag">InDesign</span>
-            <span class="svc-tag">Typesetting</span>
-            <span class="svc-tag">Print-ready PDF</span>
-            <span class="svc-tag">KDP / IngramSpark</span>
-          </div>
-        </div>
-        <div class="svc-price">
-          <span class="price-from">from</span>
-          <span class="price-num">$150</span>
+    <div class="services-header fade-up">
+      <div class="sec-eyebrow">What I offer</div>
+      <h2 class="sec-title">Services</h2>
+      <p class="sec-sub">From raw manuscript to polished, platform-ready files.</p>
+    </div>
+    <div class="services-grid fade-up">
+      <div class="svc-card">
+        <div class="svc-price"><small>from</small><strong>$150</strong></div>
+        <div class="svc-num">01</div>
+        <div class="svc-icon">📖</div>
+        <div class="svc-title">Interior Book Design</div>
+        <div class="svc-desc">Typesetting and layout for print — scholarly, literary, or trade. Precision typography using InDesign with GREP automation.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">InDesign</span>
+          <span class="svc-tag">Typesetting</span>
+          <span class="svc-tag">Print-ready PDF</span>
+          <span class="svc-tag">KDP / IngramSpark</span>
         </div>
       </div>
-      <div class="svc">
-        <div>
-          <div class="svc-num">02</div>
-          <div class="svc-title">Ebook Production</div>
-          <div class="svc-desc">Reflowable ePub 3 and KDP-compliant ebooks. Semantic markup, metadata, accessibility, and platform validation included.</div>
-          <div class="svc-tags">
-            <span class="svc-tag">ePub 3</span>
-            <span class="svc-tag">MOBI / KFX</span>
-            <span class="svc-tag">Amazon KDP</span>
-            <span class="svc-tag">Apple Books</span>
-          </div>
-        </div>
-        <div class="svc-price">
-          <span class="price-from">from</span>
-          <span class="price-num">$120</span>
+      <div class="svc-card">
+        <div class="svc-price"><small>from</small><strong>$120</strong></div>
+        <div class="svc-num">02</div>
+        <div class="svc-icon">📱</div>
+        <div class="svc-title">Ebook Production</div>
+        <div class="svc-desc">Reflowable ePub 3 and KDP-compliant ebooks. Semantic markup, metadata, accessibility, and platform validation included.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">ePub 3</span>
+          <span class="svc-tag">MOBI / KFX</span>
+          <span class="svc-tag">Amazon KDP</span>
+          <span class="svc-tag">Apple Books</span>
         </div>
       </div>
-      <div class="svc">
-        <div>
-          <div class="svc-num">03</div>
-          <div class="svc-title">Cover Design</div>
-          <div class="svc-desc">Print and digital covers with full bleed. Includes front, back, and spine — formatted for your printer's exact specs.</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Print + Ebook</span>
-            <span class="svc-tag">AI-assisted art</span>
-            <span class="svc-tag">2 revision rounds</span>
-          </div>
+      <div class="svc-card">
+        <div class="svc-price"><small>from</small><strong>$200</strong></div>
+        <div class="svc-num">03</div>
+        <div class="svc-icon">🎨</div>
+        <div class="svc-title">Cover Design</div>
+        <div class="svc-desc">Print and digital covers with full bleed. Includes front, back, and spine — formatted for your printer's exact specs.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">Print + Ebook</span>
+          <span class="svc-tag">AI-assisted art</span>
+          <span class="svc-tag">2 revision rounds</span>
         </div>
-        <div class="svc-price">
-          <span class="price-from">from</span>
-          <span class="price-num">$200</span>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <div class="svc-icon">🔤</div>
+        <div class="svc-title">Font & Type Design</div>
+        <div class="svc-desc">Custom typefaces crafted for books, brands, and publishing. From concept to production-ready OTF/TTF with full character sets.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">OTF / TTF</span>
+          <span class="svc-tag">Custom glyphs</span>
+          <span class="svc-tag">Display type</span>
+          <span class="svc-tag">Text fonts</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">05</div>
+        <div class="svc-icon">✦</div>
+        <div class="svc-title">Graphic Assets</div>
+        <div class="svc-desc">Custom ornaments, chapter dividers, icons, and illustrations designed to give your publication its own distinct visual identity.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">Ornaments</span>
+          <span class="svc-tag">Illustrations</span>
+          <span class="svc-tag">Icons</span>
+          <span class="svc-tag">SVG / EPS</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">06</div>
+        <div class="svc-icon">📦</div>
+        <div class="svc-title">Full Package</div>
+        <div class="svc-desc">Interior design, cover, ebook, and assets bundled together. One designer, one vision, from first page to final file.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">Print + Digital</span>
+          <span class="svc-tag">All formats</span>
+          <span class="svc-tag">Best value</span>
         </div>
       </div>
     </div>
@@ -315,39 +736,61 @@ footer{
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="container">
-    <div class="sec-label">Selected work</div>
-    <h2 class="sec-title">Portfolio</h2>
-    <p class="sec-sub">Academic, Islamic, trade, and ebook projects from Indonesia and international clients.</p>
-    <div class="works-grid">
-      <a href="#" style="text-decoration:none;color:inherit;display:block;" class="work-card featured">
-        <span class="work-icon">📚</span>
-        <div class="work-cat">Academic · Islamic Studies</div>
-        <div class="work-title">Penerbit Alinea — Archive of 300+ titles</div>
-        <div class="work-meta">Interior design, typesetting, and editorial management across academic and Islamic genres since 2012.</div>
+    <div class="portfolio-header fade-up">
+      <div class="sec-eyebrow">Selected work</div>
+      <h2 class="sec-title">Portfolio</h2>
+      <p class="sec-sub">Academic, Islamic, trade, and ebook projects from Indonesia and international clients.</p>
+    </div>
+    <div class="works-grid fade-up">
+      <a href="#" class="work-card wc-featured">
+        <div class="work-cover cc1">
+          <div class="cover-book"><div class="cover-glyph">A</div></div>
+        </div>
+        <div class="work-info">
+          <div class="work-cat">Academic · Islamic Studies</div>
+          <div class="work-title">Penerbit Alinea — Archive of 300+ titles</div>
+          <div class="work-meta">Interior design, typesetting, and editorial management across academic and Islamic genres since 2012.</div>
+        </div>
       </a>
-      <a href="#" style="text-decoration:none;color:inherit;display:block;" class="work-card">
-        <span class="work-icon">📖</span>
-        <div class="work-cat">Ebook · KDP</div>
-        <div class="work-title">Indonesian Language Learning Book</div>
-        <div class="work-meta">548-page ePub + print-ready PDF. Full KDP submission workflow.</div>
+      <a href="#" class="work-card wc-side">
+        <div class="work-cover cc2">
+          <div class="cover-book"><div class="cover-glyph">B</div></div>
+        </div>
+        <div class="work-info">
+          <div class="work-cat">Ebook · KDP</div>
+          <div class="work-title">Indonesian Language Learning Book</div>
+          <div class="work-meta">548-page ePub + print-ready PDF. Full KDP submission workflow.</div>
+        </div>
       </a>
-      <a href="#" style="text-decoration:none;color:inherit;display:block;" class="work-card">
-        <span class="work-icon">🎨</span>
-        <div class="work-cat">Infographics · Print</div>
-        <div class="work-title">Mandarin Learning Book — Book 1</div>
-        <div class="work-meta">35+ print-ready visual assets at 7×10 in. Consistent bold & playful visual system.</div>
+      <a href="#" class="work-card wc-third">
+        <div class="work-cover cc3">
+          <div class="cover-book"><div class="cover-glyph">M</div></div>
+        </div>
+        <div class="work-info">
+          <div class="work-cat">Infographics · Print</div>
+          <div class="work-title">Mandarin Learning Book — Book 1</div>
+          <div class="work-meta">35+ visual assets at 7×10 in. Bold visual system.</div>
+        </div>
       </a>
-      <a href="#" style="text-decoration:none;color:inherit;display:block;" class="work-card">
-        <span class="work-icon">🍽</span>
-        <div class="work-cat">Cover Design · International</div>
-        <div class="work-title">Czech Cuisine Cookbook</div>
-        <div class="work-meta">Cover art direction with AI-assisted illustration for a European client.</div>
+      <a href="#" class="work-card wc-third">
+        <div class="work-cover cc4">
+          <div class="cover-book"><div class="cover-glyph">C</div></div>
+        </div>
+        <div class="work-info">
+          <div class="work-cat">Cover Design · International</div>
+          <div class="work-title">Czech Cuisine Cookbook</div>
+          <div class="work-meta">Cover with AI-assisted illustration for a European client.</div>
+        </div>
       </a>
-      <a href="#" style="text-decoration:none;color:inherit;display:block;" class="work-card">
-        <span class="work-icon">🔬</span>
-        <div class="work-cat">Academic · Sciences</div>
-        <div class="work-title">Biology Textbook — UIN Walisongo</div>
-        <div class="work-meta">Layout, technical illustrations, and print-ready export for academic publisher.</div>
+      <a href="#" class="work-card wc-third">
+        <div class="work-cover cc5">
+          <div class="cover-book"><div class="cover-glyph">S</div></div>
+        </div>
+        <div class="work-info">
+          <div class="work-cat">Academic · Sciences</div>
+          <div class="work-title">Biology Textbook — UIN Walisongo</div>
+          <div class="work-meta">Layout, technical illustrations, and print-ready export.</div>
+        </div>
       </a>
     </div>
   </div>
@@ -357,31 +800,56 @@ footer{
 <section id="about">
   <div class="container">
     <div class="about-grid">
-      <div>
-        <div class="sec-label">About</div>
-        <h2 class="sec-title">Designer.<br>Editor.<br>Publisher.</h2>
-        <div class="about-copy" style="margin-top:1.25rem">
-          <p>I'm Zaki — a book designer and editor based in Semarang, Indonesia. I run Penerbit Alinea, an IKAPI-member publishing house with over 300 published titles.</p>
-          <p>I combine traditional editorial craft with modern production tools to deliver books that are beautiful, readable, and platform-ready — whether for print, KDP, or global ebook distribution.</p>
-          <p>I work with independent authors, academic publishers, and Islamic publishers worldwide.</p>
+      <div class="fade-up">
+        <div class="sec-eyebrow">About</div>
+        <h2 class="sec-title">Designer.<br>Layouter.<br>Publisher.</h2>
+        <div class="about-copy" style="margin-top:1.5rem">
+          <p>I'm Zaki — a book designer, layouter, and cover designer based in Semarang, Indonesia. I run Penerbit Alinea, an IKAPI-member publishing house with over 300 published titles.</p>
+          <p>Beyond books, I craft typefaces and graphic assets — ornaments, illustrations, and visual elements that give publications their distinct character.</p>
+          <p>I work with independent authors, academic publishers, and Islamic publishers across Indonesia and internationally.</p>
         </div>
-        <div class="skills">
-          <span class="skill">Adobe InDesign</span>
-          <span class="skill">ePub / MOBI</span>
-          <span class="skill">KDP Publishing</span>
-          <span class="skill">Academic Editing</span>
-          <span class="skill">Islamic Books</span>
-          <span class="skill">Python Automation</span>
+        <div class="skills-group">
+          <div class="skills-label">Tools & Software</div>
+          <div class="skills">
+            <span class="skill">Adobe InDesign</span>
+            <span class="skill">Illustrator</span>
+            <span class="skill">Fontlab / Glyphs</span>
+            <span class="skill">ePub / MOBI</span>
+            <span class="skill">Python Automation</span>
+          </div>
+          <div class="skills-label">Specialties</div>
+          <div class="skills">
+            <span class="skill">KDP Publishing</span>
+            <span class="skill">Academic Editing</span>
+            <span class="skill">Islamic Books</span>
+            <span class="skill">Type Design</span>
+            <span class="skill">GREP Automation</span>
+          </div>
         </div>
       </div>
-      <div class="about-card">
-        <div class="about-avatar" id="about-avatar" style="background:none;border:2px solid rgba(255,255,255,0.2);overflow:hidden;padding:0;">
-        <img src="nichalzaki.png" alt="Nichal Zaki" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
-      </div>
-        <div class="about-name">Nichal Zaki</div>
-        <div class="about-role">Book Designer & Ebook Specialist</div>
-        <div class="about-divider"></div>
-        <div class="about-pub">Penerbit Alinea · Semarang, Indonesia</div>
+      <div class="fade-up">
+        <div class="about-card">
+          <div class="about-avatar">
+            <img src="nichalzaki.png" alt="Nichal Zaki" />
+          </div>
+          <div class="about-name">Nichal Zaki</div>
+          <div class="about-role">Book Designer & Type Creator</div>
+          <div class="about-divider"></div>
+          <div class="about-badges">
+            <div class="about-badge">
+              <div class="badge-dot"></div>
+              <div class="badge-text">Penerbit Alinea — founder & publisher</div>
+            </div>
+            <div class="about-badge">
+              <div class="badge-dot"></div>
+              <div class="badge-text">IKAPI member · Semarang, Indonesia</div>
+            </div>
+            <div class="about-badge">
+              <div class="badge-dot"></div>
+              <div class="badge-text">Available for international projects</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -390,15 +858,26 @@ footer{
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <div class="sec-label">Get in touch</div>
-    <h2 class="sec-title">Start a project</h2>
-    <div class="contact-grid">
+    <div class="fade-up">
+      <div class="sec-eyebrow">Get in touch</div>
+      <h2 class="sec-title">Start a project</h2>
+    </div>
+    <div class="contact-grid fade-up">
       <div>
-        <p style="font-size:15px;color:var(--mid);line-height:1.8;margin-bottom:.25rem">Tell me about your book. I respond within 24 hours and can start most projects within 1–2 weeks.</p>
-        <div class="contact-info">
-          <div class="cinfo"><span class="cinfo-dot"></span>nichal.zaki@gmail.com</div>
-          <div class="cinfo"><span class="cinfo-dot"></span>Semarang, Indonesia · GMT+7</div>
-          <div class="cinfo"><span class="cinfo-dot"></span>Available for international projects</div>
+        <p style="font-size:15px;color:var(--mid);line-height:1.85;margin-top:1.5rem">Tell me about your book. I respond within 24 hours and can start most projects within 1–2 weeks.</p>
+        <div class="contact-meta">
+          <div class="cmeta-item">
+            <div class="cmeta-icon">✉</div>
+            <span>nichal.zaki@gmail.com</span>
+          </div>
+          <div class="cmeta-item">
+            <div class="cmeta-icon">📍</div>
+            <span>Semarang, Indonesia · GMT+7</span>
+          </div>
+          <div class="cmeta-item">
+            <div class="cmeta-icon">🌍</div>
+            <span>Available for international projects</span>
+          </div>
         </div>
       </div>
       <div>
@@ -420,6 +899,8 @@ footer{
               <option>Interior book design</option>
               <option>Ebook production (ePub / KDP)</option>
               <option>Cover design</option>
+              <option>Font & type design</option>
+              <option>Graphic assets</option>
               <option>Full package (design + ebook)</option>
               <option>Other</option>
             </select>
@@ -428,7 +909,7 @@ footer{
             <label>About your project</label>
             <textarea id="f-msg" placeholder="Genre, word count, timeline, budget..."></textarea>
           </div>
-          <p class="form-note">Clicking the button below will open WhatsApp with your message pre-filled. You'll just need to press Send.</p>
+          <p class="form-note">Clicking the button below will open WhatsApp with your message pre-filled.</p>
           <button class="btn-wa" onclick="sendToWhatsApp()">
             <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Send via WhatsApp
@@ -441,35 +922,62 @@ footer{
 
 <footer>
   <span class="footer-logo">Nichal Zaki</span>
+  <div class="footer-links">
+    <a href="mailto:nichal.zaki@gmail.com">Email</a>
+    <a href="#">Instagram</a>
+    <a href="#">Behance</a>
+  </div>
   <span class="footer-copy">© 2026 Nichal Zaki</span>
 </footer>
 
 <script>
+// Dark mode
+const toggle = document.getElementById('themeToggle');
+const root = document.documentElement;
+function setTheme(dark) {
+  root.dataset.theme = dark ? 'dark' : 'light';
+  toggle.textContent = dark ? '☾' : '☀';
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+}
+const saved = localStorage.getItem('theme');
+if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  setTheme(true);
+}
+toggle.addEventListener('click', () => setTheme(root.dataset.theme !== 'dark'));
+
+// Scroll fade-in
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 100);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+// Active nav highlight
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-center a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+  navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+}, { passive: true });
+
+// WhatsApp
 function sendToWhatsApp() {
   const name = document.getElementById('f-name').value.trim();
   const email = document.getElementById('f-email').value.trim();
   const type = document.getElementById('f-type').value;
   const msg = document.getElementById('f-msg').value.trim();
-
   if (!name || !type) {
     alert('Please fill in your name and select a project type.');
     return;
   }
-
-  // ← GANTI dengan nomor WhatsApp kamu (format internasional, tanpa + atau spasi)
-  const waNumber = '6282243813872';
-
-  const text = `Hi Zaki! I found your portfolio website and I'd like to discuss a project.
-
-*Name:* ${name}
-*Email:* ${email || '-'}
-*Service:* ${type}
-*Details:* ${msg || '-'}`;
-
-  const encoded = encodeURIComponent(text);
-  window.open(`https://wa.me/${waNumber}?text=${encoded}`, '_blank');
+  const text = `Hi Zaki! I found your portfolio website and I'd like to discuss a project.\n\n*Name:* ${name}\n*Email:* ${email || '-'}\n*Service:* ${type}\n*Details:* ${msg || '-'}`;
+  window.open(`https://wa.me/6282243813872?text=${encodeURIComponent(text)}`, '_blank');
 }
 </script>
-
 </body>
 </html>
