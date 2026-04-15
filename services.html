@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Pricing — Nichal Zaki Book Designer</title>
+    <meta name="description"
+        content="Professional book interior design, cover design, ebook production and graphic assets. Transparent pricing for Amazon KDP and IngramSpark.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/shared.css">
+    <style>
+        .svc-full {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: 56px 1fr;
+            gap: 0 2rem;
+            align-items: start;
+            transition: border-color var(--t);
+        }
+
+        .svc-full:hover {
+            border-color: var(--accent);
+        }
+
+        .svc-full-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--alight);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .svc-full h3 {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: .5rem;
+        }
+
+        .svc-full-desc {
+            font-size: .9rem;
+            color: var(--mid);
+            line-height: 1.85;
+            margin-bottom: 1.25rem;
+        }
+
+        .svc-full-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .svc-full-list li {
+            font-size: .875rem;
+            color: var(--mid);
+            display: flex;
+            gap: .625rem;
+        }
+
+        .svc-full-list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .svc-full-foot {
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .plan {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: border-color var(--t), transform .25s ease;
+            position: relative;
+        }
+
+        .plan.featured {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 1px var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: #fff;
+            font-size: .6875rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 100px;
+        }
+
+        .plan-name {
+            font-size: .6875rem;
+            font-weight: 600;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: .75rem;
+        }
+
+        .plan-price {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            color: var(--ink);
+            line-height: 1;
+            margin-bottom: .25rem;
+        }
+
+        .plan-price sup {
+            font-size: 1.25rem;
+            vertical-align: top;
+            margin-top: .35rem;
+            display: inline-block;
+        }
+
+        .plan-sub {
+            font-size: .8125rem;
+            color: var(--muted);
+            margin-bottom: 1.75rem;
+        }
+
+        .plan-divider {
+            height: 1px;
+            background: var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .plan-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            flex: 1;
+            margin-bottom: 1.75rem;
+        }
+
+        .plan-list li {
+            font-size: .875rem;
+            color: var(--mid);
+            display: flex;
+            gap: .625rem;
+        }
+
+        .plan-list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .plan-list li.dim::before {
+            content: '—';
+            color: var(--faint);
+        }
+
+        .plan-list li.dim {
+            color: var(--faint);
+        }
+
+        .plan-note {
+            font-size: .75rem;
+            color: var(--muted);
+            margin-top: .75rem;
+        }
+
+        .faq-list {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            max-width: 720px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            overflow: hidden;
+            transition: border-color var(--t);
+        }
+
+        .faq-item.open {
+            border-color: var(--accent);
+        }
+
+        .faq-q {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: var(--sans);
+            font-size: .9375rem;
+            font-weight: 500;
+            color: var(--ink);
+            text-align: left;
+            gap: 1rem;
+            transition: color var(--t);
+        }
+
+        .faq-q:hover {
+            color: var(--accent);
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            color: var(--mid);
+            transition: transform var(--t), background var(--t);
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+            background: var(--alight);
+        }
+
+        .faq-a {
+            display: none;
+            padding: 0 1.5rem 1.25rem;
+            font-size: .875rem;
+            color: var(--mid);
+            line-height: 1.85;
+        }
+
+        .faq-item.open .faq-a {
+            display: block;
+        }
+
+        @media (max-width: 720px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .plan.featured {
+                transform: none;
+            }
+
+            .svc-full {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a class="nav-logo" href="index.html">nichal<b>zaki</b></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div class="nav-tools">
+            <button class="nav-icon-btn" id="fontToggle" title="Toggle font size">Aa</button>
+            <button class="nav-icon-btn" id="themeToggle" title="Toggle dark mode">☀</button>
+            <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <button class="nav-cta" onclick="window.location='index.html#contact'">Hire me</button>
+        </div>
+    </nav>
+    <nav class="nav-mobile" id="navMobile">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <span class="sec-fl" data-scroll-speed="0.1" style="font-size:26vw;top:-6%;right:-4%;opacity:.04;">S</span>
+        <div class="wrap">
+            <div class="hero-tag">What I offer</div>
+            <h1>Services</h1>
+            <p class="hero-sub">Transparent scope, clear deliverables, and platform-ready output — every time.</p>
+        </div>
+    </section>
+
+    <!-- SERVICES DETAIL -->
+    <section style="padding: 5rem 0 6rem; background: var(--bg); border-top: 1px solid var(--border);">
+        <div class="wrap">
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+
+                <div class="svc-full fade-up">
+                    <div class="svc-full-icon">📖</div>
+                    <div>
+                        <h3>Book Interior Design</h3>
+                        <p class="svc-full-desc">From dense academic manuscripts to full-color children's books —every
+                            page typeset with precision, clean margins, and print-perfect output.</p>
+                        <ul class="svc-full-list">
+                            <li>Custom baseline grid and margin setup for any trim size</li>
+                            <li>Typography system: body, headers, captions, footnotes</li>
+                            <li>Running headers/footers, page numbering, TOC</li>
+                            <li>Widow/orphan control and hyphenation</li>
+                            <li>Image placement and CMYK color management</li>
+                            <li>Preflight check and print-ready PDF export</li>
+                        </ul>
+                        <div class="svc-full-foot">
+                            <span class="pbadge">Amazon KDP</span><span class="pbadge">IngramSpark</span>
+                            <span class="pbadge">Draft2Digital</span><span class="pbadge">Print-on-Demand</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="svc-full fade-up">
+                    <div class="svc-full-icon">🎨</div>
+                    <div>
+                        <h3>Cover Design</h3>
+                        <p class="svc-full-desc">Full wrap covers built to exact printer specs. Delivered with bleed,
+                            safe zones, and high-res exports — no upload rejections.</p>
+                        <ul class="svc-full-list">
+                            <li>Front, back, and spine — one unified design</li>
+                            <li>Correct bleed, safe zone, and resolution (300 dpi)</li>
+                            <li>KDP cover calculator, IngramSpark template, or custom spec</li>
+                            <li>Print-ready PDF, flat PNG, and 3D mockup</li>
+                            <li>Up to 3 rounds of revisions included</li>
+                        </ul>
+                        <div class="svc-full-foot">
+                            <span class="pbadge">Amazon KDP</span><span class="pbadge">IngramSpark</span>
+                            <span class="pbadge">Full Bleed</span><span class="pbadge">Print + Digital</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="svc-full fade-up">
+                    <div class="svc-full-icon">📱</div>
+                    <div>
+                        <h3>Ebook Production</h3>
+                        <p class="svc-full-desc">Reflowable ePub 3 files with semantic HTML, metadata, and WCAG
+                            accessibility. Validated with EPUBCheck. MOBI/KFX included for Amazon.</p>
+                        <ul class="svc-full-list">
+                            <li>Clean semantic HTML markup</li>
+                            <li>Metadata (title, author, ISBN, language, publisher)</li>
+                            <li>Working TOC, NCX navigation, cover image</li>
+                            <li>WCAG 2.1 accessibility markup</li>
+                            <li>EPUBCheck validated (0 errors, 0 warnings)</li>
+                            <li>MOBI/KFX export for Amazon KDP</li>
+                        </ul>
+                        <div class="svc-full-foot">
+                            <span class="pbadge">Amazon KDP</span><span class="pbadge">Apple Books</span>
+                            <span class="pbadge">Draft2Digital</span><span class="pbadge">Google Play Books</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="svc-full fade-up">
+                    <div class="svc-full-icon">✦</div>
+                    <div>
+                        <h3>Graphic Assets &amp; Type</h3>
+                        <p class="svc-full-desc">Custom ornaments, chapter dividers, infographics, and typefaces — a
+                            visual identity no template can replicate.</p>
+                        <ul class="svc-full-list">
+                            <li>Decorative ornaments and section dividers (SVG/EPS)</li>
+                            <li>Custom chapter opener illustrations or icons</li>
+                            <li>Infographics, charts, and diagrams (print + web)</li>
+                            <li>Custom display type or full typeface (OTF/TTF)</li>
+                            <li>Standalone delivery or embedded in layout</li>
+                        </ul>
+                        <div class="svc-full-foot">
+                            <span class="pbadge">SVG / EPS</span><span class="pbadge">OTF / TTF</span>
+                            <span class="pbadge">Ornaments</span><span class="pbadge">Infographics</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section style="padding: 6rem 0; background: var(--bg); border-top: 1px solid var(--border);">
+        <div class="wrap">
+            <div class="fade-up">
+                <div class="eyebrow">Transparent pricing</div>
+                <h2 class="sec-h">Book Interior Packages</h2>
+                <p class="sec-p">All packages include print-ready PDF output. Custom quotes available for complex
+                    projects.</p>
+            </div>
+            <div class="pricing-grid fade-up">
+
+                <div class="plan">
+                    <div class="plan-name">Basic</div>
+                    <div class="plan-price"><sup>$</sup>49</div>
+                    <p class="plan-sub">Up to 20,000 words · 1 trim size</p>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-list">
+                        <li>Interior layout (print PDF)</li>
+                        <li>1 trim size (e.g. 6×9")</li>
+                        <li>Standard text-only layout</li>
+                        <li>TOC, running headers, page numbers</li>
+                        <li>Up to 2 revisions</li>
+                        <li>Delivery in 5 business days</li>
+                        <li class="dim">ePub / Ebook file</li>
+                        <li class="dim">Images or graphics</li>
+                        <li class="dim">Source file (INDD)</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-outline" style="text-align:center;">Get started</a>
+                </div>
+
+                <div class="plan featured">
+                    <div class="plan-badge">Most popular</div>
+                    <div class="plan-name">Standard</div>
+                    <div class="plan-price"><sup>$</sup>129</div>
+                    <p class="plan-sub">Up to 60,000 words · 2 trim sizes</p>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-list">
+                        <li>Everything in Basic</li>
+                        <li>Up to 60,000 words</li>
+                        <li>2 trim sizes included</li>
+                        <li>Up to 20 images/figures</li>
+                        <li>Custom typography system</li>
+                        <li>Up to 4 revisions</li>
+                        <li>ePub 3 / KDP ebook file</li>
+                        <li>Delivery in 7 business days</li>
+                        <li class="dim">Source file (INDD)</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-primary" style="text-align:center;display:block;">Get
+                        started</a>
+                    <p class="plan-note">Most clients choose this package.</p>
+                </div>
+
+                <div class="plan">
+                    <div class="plan-name">Premium</div>
+                    <div class="plan-price"><sup>$</sup>249</div>
+                    <p class="plan-sub">Unlimited pages · Full package</p>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-list">
+                        <li>Everything in Standard</li>
+                        <li>Unlimited word count</li>
+                        <li>Unlimited images &amp; tables</li>
+                        <li>Unlimited revisions</li>
+                        <li>InDesign source file (INDD)</li>
+                        <li>ePub 3 + MOBI/KFX</li>
+                        <li>Preflight &amp; validation report</li>
+                        <li>Delivery in 10 business days</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn-outline" style="text-align:center;">Get started</a>
+                </div>
+
+            </div>
+            <p style="text-align:center;font-size:.8125rem;color:var(--muted);margin-top:1.5rem;">
+                Cover design and ebook conversion available as add-ons.
+                <a href="index.html#contact" style="color:var(--accent)">Ask for a custom quote →</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="padding: 6rem 0; background: var(--surface); border-top: 1px solid var(--border);">
+        <div class="wrap">
+            <div class="fade-up">
+                <div class="eyebrow">Questions</div>
+                <h2 class="sec-h">Frequently asked</h2>
+            </div>
+            <div class="faq-list fade-up">
+
+                <div class="faq-item">
+                    <button class="faq-q">What file formats do you accept? <span class="faq-icon">+</span></button>
+                    <div class="faq-a">I work with Microsoft Word (.docx), Google Docs, RTF, and plain text. For
+                        image-heavy books, please share images as high-resolution JPG or PNG (300 dpi minimum). I handle
+                        all layout and formatting from there.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">How long does a project take? <span class="faq-icon">+</span></button>
+                    <div class="faq-a">Basic projects take 3–5 business days. Standard and Premium range from 7–14 days
+                        depending on page count. Rush delivery (24–72h) is available for an additional fee — ask before
+                        ordering.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">Do you guarantee KDP / IngramSpark approval? <span
+                            class="faq-icon">+</span></button>
+                    <div class="faq-a">Yes. Every file I deliver is preflighted to meet platform specs. If your file is
+                        rejected due to a layout issue on my end, I will fix it at no charge. I have a 100%
+                        platform-approval track record across 300+ books.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">Can I see a sample before I commit? <span class="faq-icon">+</span></button>
+                    <div class="faq-a">Absolutely. I can create a 2–5 page sample layout based on your manuscript so you
+                        can see the look and feel before we proceed. Just reach out and share your file.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">What if I need more revisions than included? <span
+                            class="faq-icon">+</span></button>
+                    <div class="faq-a">Each revision round covers as many individual changes as needed — I don't count
+                        single edits as separate revisions. If you need additional rounds beyond the limit, extra
+                        revisions are billed at a flat rate.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">Do you sign an NDA? <span class="faq-icon">+</span></button>
+                    <div class="faq-a">Yes. If your project requires an NDA, I am happy to sign one before work begins.
+                        Your manuscript is kept strictly confidential and never shared with third parties.</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding: 5rem 0; background: var(--bg); border-top: 1px solid var(--border); text-align: center;">
+        <div class="wrap fade-up">
+            <div class="eyebrow eyebrow-c">Ready?</div>
+            <h2 class="sec-h" style="margin-bottom: 1rem;">Let's talk about your book</h2>
+            <p class="sec-p" style="max-width: 460px; margin: 0 auto 2rem;">Send me a message — I respond within 24
+                hours and provide a free quote.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="portfolio.html" class="btn-outline">See my work</a>
+                <a href="index.html#contact" class="btn-primary">Start a project →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="foot-logo">Nichal Zaki</span>
+        <div class="foot-links">
+            <a href="mailto:nichal.zaki@gmail.com">Email</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="services.html">Services</a>
+            <a href="#" target="_blank">Fiverr</a>
+        </div>
+        <span class="foot-copy">© 2026 Nichal Zaki</span>
+    </footer>
+
+    <script src="js/shared.js"></script>
+    <script>
+        document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+    </script>
+</body>
+
+</html>

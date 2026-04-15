@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Nichal Zaki Book Designer</title>
+    <meta name="description"
+        content="Learn about Nichal Zaki — book interior designer with 12+ years of experience, 300+ books published, and clients across the US, Europe, and beyond.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/shared.css">
+    <style>
+        /* ── Bio section ── */
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: 3rem;
+        }
+
+        .bio-avatar {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .bio-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .bio-name {
+            font-family: var(--serif);
+            font-size: 1.875rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: .25rem;
+        }
+
+        .bio-role {
+            font-size: .8125rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: .08em;
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-text {
+            font-size: .9375rem;
+            color: var(--mid);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .chip {
+            font-size: .75rem;
+            font-weight: 500;
+            color: var(--ink);
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            padding: 5px 12px;
+            border-radius: 100px;
+        }
+
+        /* ── Stats strip ── */
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .strip-stat {
+            background: var(--surface);
+            padding: 1.75rem 1.5rem;
+            text-align: center;
+            transition: background var(--t);
+        }
+
+        .strip-stat:hover {
+            background: var(--bg);
+        }
+
+        .strip-stat b {
+            display: block;
+            font-family: var(--serif);
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .strip-stat span {
+            font-size: .75rem;
+            color: var(--muted);
+            margin-top: 6px;
+            display: block;
+        }
+
+        /* ── Process steps ── */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: 2rem 1.75rem;
+            position: relative;
+            transition: border-color var(--t), transform .25s ease;
+        }
+
+        .step:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .step-num {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: .15;
+            line-height: 1;
+            margin-bottom: .5rem;
+            user-select: none;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--alight);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-family: var(--serif);
+            font-size: 1.0625rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: .5rem;
+        }
+
+        .step-desc {
+            font-size: .8125rem;
+            color: var(--mid);
+            line-height: 1.8;
+        }
+
+        /* Connector arrows between steps */
+        .step::after {
+            content: '→';
+            position: absolute;
+            right: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.25rem;
+            color: var(--border);
+            z-index: 2;
+        }
+
+        .step:last-child::after {
+            display: none;
+        }
+
+        /* ── Tools grid ── */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .tool-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: .875rem;
+            transition: border-color var(--t);
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent);
+        }
+
+        .tool-cat {
+            font-size: .6875rem;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .tool-name {
+            font-family: var(--serif);
+            font-size: 1.0625rem;
+            font-weight: 400;
+            color: var(--ink);
+        }
+
+        .tool-desc {
+            font-size: .8125rem;
+            color: var(--mid);
+            line-height: 1.75;
+        }
+
+        /* ── Values ── */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            padding: 1.75rem;
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            background: var(--bg);
+            transition: border-color var(--t);
+        }
+
+        .value-card:hover {
+            border-color: var(--accent);
+        }
+
+        .value-icon {
+            font-size: 1.5rem;
+            margin-bottom: .75rem;
+        }
+
+        .value-title {
+            font-family: var(--serif);
+            font-size: 1rem;
+            color: var(--ink);
+            margin-bottom: .4rem;
+        }
+
+        .value-desc {
+            font-size: .8125rem;
+            color: var(--mid);
+            line-height: 1.75;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .step::after {
+                display: none;
+            }
+
+            .stats-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .bio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bio-avatar {
+                max-width: 180px;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-strip {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a class="nav-logo" href="index.html">nichal<b>zaki</b></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div class="nav-tools">
+            <button class="nav-icon-btn" id="fontToggle" title="Toggle font size">Aa</button>
+            <button class="nav-icon-btn" id="themeToggle" title="Toggle dark mode">☀</button>
+            <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <button class="nav-cta" onclick="window.location='index.html#contact'">Hire me</button>
+        </div>
+    </nav>
+    <nav class="nav-mobile" id="navMobile">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <span class="sec-fl" data-scroll-speed="0.12" style="font-size:24vw;top:-5%;right:-3%;opacity:.04;">A</span>
+        <div class="wrap">
+            <div class="hero-tag">The designer behind the books</div>
+            <h1>About Nichal</h1>
+            <p class="hero-sub">12+ years turning manuscripts into beautifully crafted, platform-ready books.</p>
+        </div>
+    </section>
+
+    <!-- BIO -->
+    <section style="padding: 5rem 0 6rem; background: var(--bg); border-top: 1px solid var(--border);">
+        <div class="wrap">
+            <div class="bio-grid fade-up">
+                <div>
+                    <div class="bio-avatar">
+                        <img src="images/about/nichalzaki.png" alt="Nichal Zaki — Book Interior Designer">
+                    </div>
+                </div>
+                <div>
+                    <div class="bio-name">Nichal Zaki</div>
+                    <div class="bio-role">Book Interior Designer &amp; Layouter · Semarang, Indonesia</div>
+                    <p class="bio-text">
+                        I've spent more than a decade obsessing over the space between letters, the rhythm of a
+                        paragraph, and the quiet architecture that makes a reader forget they're even reading a book.
+                    </p>
+                    <p class="bio-text">
+                        I started in traditional print design, working on academic journals and trade publications,
+                        before transitioning fully into book interior design. Today I specialize in self-publishing —
+                        helping independent authors and small publishers get print-ready, platform-approved files
+                        without the back-and-forth of rejections and reformatting.
+                    </p>
+                    <p class="bio-text">
+                        Every project I take on has one goal: make your book look like it belongs on a shelf next to any
+                        traditionally published title. That means precision, patience, and never cutting corners on the
+                        details that matter.
+                    </p>
+                    <div class="bio-chips">
+                        <span class="chip">📖 Book Interior</span>
+                        <span class="chip">🎨 Cover Design</span>
+                        <span class="chip">📱 Ebook Production</span>
+                        <span class="chip">✦ Graphic Assets</span>
+                        <span class="chip">📍 Semarang, Indonesia</span>
+                        <span class="chip">🌍 Works globally</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-strip fade-up">
+                <div class="strip-stat"><b>300+</b><span>Books published</span></div>
+                <div class="strip-stat"><b>12+</b><span>Years of craft</span></div>
+                <div class="strip-stat"><b>5.0★</b><span>Fiverr rating</span></div>
+                <div class="strip-stat"><b>US · EU · AU · IT</b><span>Clients worldwide</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section style="padding: 6rem 0; background: var(--surface); border-top: 1px solid var(--border);">
+        <div class="wrap">
+            <div class="fade-up">
+                <div class="eyebrow">How I work</div>
+                <h2 class="sec-h">My process</h2>
+                <p class="sec-p">A structured workflow that keeps projects moving without surprises — from your
+                    manuscript to approved upload.</p>
+            </div>
+            <div class="process-grid fade-up">
+
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <div class="step-icon">💬</div>
+                    <div class="step-title">Discovery</div>
+                    <div class="step-desc">We discuss your book's genre, target audience, trim size, platform, and
+                        visual references. I ask questions most designers skip — because they matter.</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <div class="step-icon">✏️</div>
+                    <div class="step-title">Design &amp; Layout</div>
+                    <div class="step-desc">I build a custom typographic system and grid, then lay out every page with
+                        precision — handling widows, orphans, spacing, and image flow.</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <div class="step-icon">🔄</div>
+                    <div class="step-title">Review &amp; Revisions</div>
+                    <div class="step-desc">You receive a proof PDF. We refine together — fonts, spacing, chapter
+                        headers, anything that isn't right. Revisions are included, not charged per change.</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">04</div>
+                    <div class="step-icon">🚀</div>
+                    <div class="step-title">Export &amp; QA</div>
+                    <div class="step-desc">Final files are preflighted, validated (ePub), and exported to your
+                        platform's exact spec. You receive a ready-to-upload package — no guesswork.</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section style="padding: 6rem 0; background: var(--bg); border-top: 1px solid var(--border);">
+        <div class="wrap">
+            <div class="fade-up">
+                <div class="eyebrow">Toolchain</div>
+                <h2 class="sec-h">Tools I use</h2>
+                <p class="sec-p">Industry-standard software chosen for precision, reliability, and output quality.</p>
+            </div>
+            <div class="tools-grid fade-up">
+
+                <div class="tool-card">
+                    <div class="tool-cat">Primary Layout</div>
+                    <div class="tool-name">Adobe InDesign</div>
+                    <div class="tool-desc">The industry standard for book layout. Used for every interior design project
+                        — from novels to full-color coffee table books. Exported as preflight-ready PDFs.</div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-cat">Cover &amp; Illustration</div>
+                    <div class="tool-name">Adobe Photoshop &amp; Illustrator</div>
+                    <div class="tool-desc">Photoshop handles photo compositing and CMYK color for print covers.
+                        Illustrator builds vector ornaments, infographics, icons, and scalable design elements.</div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-cat">Ebook Production</div>
+                    <div class="tool-name">Sigil &amp; Calibre</div>
+                    <div class="tool-desc">Sigil for clean ePub 3 authoring with semantic HTML. Calibre for MOBI/KFX
+                        conversion. EPUBCheck for validation — I ship 0-error files every time.</div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-cat">Typography</div>
+                    <div class="tool-name">Glyphs App</div>
+                    <div class="tool-desc">Used for custom type design projects — bespoke display fonts, ligature sets,
+                        and decorative glyphs that give a book a one-of-a-kind visual identity.</div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-cat">Preflight &amp; QA</div>
+                    <div class="tool-name">Adobe Acrobat Pro</div>
+                    <div class="tool-desc">Every PDF is run through Acrobat's preflight engine before delivery —
+                        checking bleed, color profiles, resolution, embedded fonts, and platform compliance.</div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-cat">Collaboration</div>
+                    <div class="tool-name">Google Drive &amp; Notion</div>
+                    <div class="tool-desc">Files are shared securely via Google Drive. Project notes, revision logs, and
+                        timelines are tracked in Notion so we're always on the same page — literally.</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUES -->
+    <section style="padding: 6rem 0; background: var(--surface); border-top: 1px solid var(--border);">
+        <div class="wrap">
+            <div class="fade-up">
+                <div class="eyebrow">How I approach work</div>
+                <h2 class="sec-h">What I believe in</h2>
+            </div>
+            <div class="values-grid fade-up">
+
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <div class="value-title">Precision over speed</div>
+                    <div class="value-desc">I would rather take an extra day to get the spacing right than rush a file
+                        that fails preflight or looks wrong on the page.</div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">📐</div>
+                    <div class="value-title">Invisible craft</div>
+                    <div class="value-desc">Great book design doesn't call attention to itself — it simply makes reading
+                        feel effortless. The grid, the margins, the type — all in service of the words.</div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">💬</div>
+                    <div class="value-title">Clear communication</div>
+                    <div class="value-desc">I respond fast, explain my decisions, and never leave you guessing about the
+                        status of your project. No radio silence, no vague updates.</div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🔁</div>
+                    <div class="value-title">Revisions are part of the work</div>
+                    <div class="value-desc">I don't treat revision requests as interruptions. They're how we get from
+                        good to exactly right. Every included round is taken as seriously as the first draft.</div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">📦</div>
+                    <div class="value-title">Clean file delivery</div>
+                    <div class="value-desc">Every package I deliver is organised, labelled, and ready to use. Print
+                        PDFs, ePub files, covers — packaged clearly so you know exactly what you're uploading.</div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🌏</div>
+                    <div class="value-title">Built for global publishing</div>
+                    <div class="value-desc">My clients are authors and publishers in the US, Europe, and Australia. I
+                        understand the spec requirements of every major platform and deliver accordingly.</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding: 5rem 0; background: var(--bg); border-top: 1px solid var(--border); text-align: center;">
+        <div class="wrap fade-up">
+            <div class="eyebrow eyebrow-c">Let's work together</div>
+            <h2 class="sec-h" style="margin-bottom: 1rem;">Ready to start your project?</h2>
+            <p class="sec-p" style="max-width: 460px; margin: 0 auto 2rem;">I respond within 24 hours and can start
+                within 1–2 weeks. Reach out and tell me about your book.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="portfolio.html" class="btn-outline">See my portfolio</a>
+                <a href="index.html#contact" class="btn-primary">Start a project →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="foot-logo">Nichal Zaki</span>
+        <div class="foot-links">
+            <a href="mailto:nichal.zaki@gmail.com">Email</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="services.html">Services</a>
+            <a href="#" target="_blank">Fiverr</a>
+        </div>
+        <span class="foot-copy">© 2026 Nichal Zaki</span>
+    </footer>
+
+    <script src="js/shared.js"></script>
+</body>
+
+</html>

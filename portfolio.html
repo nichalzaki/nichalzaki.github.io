@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Nichal Zaki Book Designer</title>
+    <meta name="description"
+        content="Browse Nichal Zaki's full portfolio of book interior layouts, cover designs, ebook production, and graphic assets for Amazon KDP and IngramSpark.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/shared.css">
+    <style>
+        /* ── Filter tabs ── */
+        .filter-bar {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+
+        .filter-btn {
+            font-size: .75rem;
+            font-weight: 500;
+            letter-spacing: .06em;
+            color: var(--mid);
+            border: 1px solid var(--border);
+            background: none;
+            padding: 7px 16px;
+            border-radius: 100px;
+            cursor: pointer;
+            font-family: var(--sans);
+            transition: all var(--t);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* Portfolio grid on this page — 3 cols → all cards */
+        .port-grid {
+            margin-top: 2rem;
+        }
+
+        /* Card hidden state for filter */
+        .port-card.hidden {
+            display: none;
+        }
+
+        /* ── Lightbox overlay ── */
+        .lb-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            background: rgba(10, 10, 16, .82);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .lb-overlay.open {
+            display: flex;
+        }
+
+        .lb-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            max-width: 620px;
+            width: 100%;
+            max-height: 88vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 2.25rem;
+            animation: lbIn .28s ease;
+        }
+
+        @keyframes lbIn {
+            from {
+                transform: scale(.95) translateY(12px);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .lb-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--mid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--t);
+        }
+
+        .lb-close:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .lb-thumb {
+            height: 180px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        /* Image thumbnails in cards */
+        .port-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .4s ease;
+        }
+
+        .port-card:hover .port-thumb img {
+            transform: scale(1.04);
+        }
+
+        /* Image in lightbox */
+        .lb-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .lb-cat {
+            font-size: .6875rem;
+            font-weight: 500;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: .375rem;
+        }
+
+        .lb-title {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: .75rem;
+        }
+
+        .lb-desc {
+            font-size: .9rem;
+            color: var(--mid);
+            line-height: 1.85;
+            margin-bottom: 1.25rem;
+        }
+
+        .lb-meta {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lb-meta-row {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+            font-size: .8125rem;
+            color: var(--mid);
+        }
+
+        .lb-meta-row strong {
+            color: var(--ink);
+            font-weight: 500;
+            min-width: 80px;
+        }
+
+        .lb-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .lb-cta {
+            display: flex;
+            gap: .75rem;
+        }
+
+        /* ── Stat bar above grid ── */
+        .stat-bar {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: .5rem;
+        }
+
+        .stat-bar .stat b {
+            font-size: 1.5rem;
+        }
+
+        .stat-bar .stat span {
+            font-size: .6875rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a class="nav-logo" href="index.html">nichal<b>zaki</b></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div class="nav-tools">
+            <button class="nav-icon-btn" id="fontToggle" title="Toggle font size">Aa</button>
+            <button class="nav-icon-btn" id="themeToggle" title="Toggle dark mode">☀</button>
+            <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <button class="nav-cta" onclick="window.location='index.html#contact'">Hire me</button>
+        </div>
+    </nav>
+
+    <nav class="nav-mobile" id="navMobile">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <span class="sec-fl" data-scroll-speed="0.1" style="font-size:28vw;top:-8%;right:-5%;opacity:.04;">f</span>
+        <div class="wrap">
+            <div class="hero-tag">Selected work</div>
+            <h1>Portfolio</h1>
+            <p class="hero-sub">300+ books across every genre — all formatted print-ready for global publishing
+                platforms.</p>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO GRID -->
+    <section id="portfolio" style="padding: 4rem 0 6rem; background: var(--bg);">
+        <div class="wrap">
+
+            <!-- Stat bar -->
+            <div class="stat-bar fade-up">
+                <div class="stat"><b>300+</b><span>Books completed</span></div>
+                <div class="stat"><b>12+</b><span>Years of craft</span></div>
+                <div class="stat"><b>5.0★</b><span>Fiverr rating</span></div>
+                <div class="stat"><b>US · EU · AU</b><span>Clients worldwide</span></div>
+            </div>
+
+            <!-- Filter -->
+            <div class="filter-bar fade-up" id="filterBar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="interior">Interior Layout</button>
+                <button class="filter-btn" data-filter="cover">Cover Design</button>
+                <button class="filter-btn" data-filter="ebook">Ebook</button>
+                <button class="filter-btn" data-filter="graphic">Graphic Assets</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="port-grid" id="portGrid">
+
+                <div class="port-card fade-up" data-cat="interior" data-title="Text-Heavy Book Layout"
+                    data-lb-cat="Interior Layout" data-emoji="📄" data-thumb="pt-1"
+                    data-img="images/portfolio/akuntansi-keberlanjutan-scaled.jpg"
+                    data-desc="Novels, academic texts, and reference books. Dense copy handled with precise grids and optimal readability at any page count. Includes baseline grids, widow/orphan control, running headers, and TOC."
+                    data-tools="Adobe InDesign, Adobe Acrobat" data-platforms="Amazon KDP, IngramSpark, Draft2Digital"
+                    data-deliverables="Print-ready PDF, ePub (optional)"
+                    data-tags='["InDesign","KDP Ready","IngramSpark","Baseline Grid"]'>
+                    <div class="port-thumb">
+                        <img src="images/portfolio/akuntansi-keberlanjutan-scaled.jpg" alt="Text-Heavy Book Layout"
+                            loading="lazy">
+                    </div>
+                    <div class="port-body">
+                        <div class="port-cat">Interior Layout</div>
+                        <div class="port-title">Text-Heavy Book Layout</div>
+                        <div class="port-desc">Novels, academic texts, and reference books. Dense copy handled with
+                            precise grids and optimal readability at any page count.</div>
+                        <div class="port-foot">
+                            <span class="port-tag">InDesign</span><span class="port-tag">KDP Ready</span><span
+                                class="port-tag">IngramSpark</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="port-card fade-up" data-cat="interior" data-title="Full-Picture Book Layout"
+                    data-lb-cat="Interior Layout" data-emoji="🖼" data-thumb="pt-2"
+                    data-img="images/portfolio/active-scaled.jpg"
+                    data-desc="Coffee table books, photography, and illustrated titles. Image-first layouts with seamless bleed and print-perfect color management for full-color spreads."
+                    data-tools="Adobe InDesign, Adobe Photoshop, Adobe Illustrator"
+                    data-platforms="IngramSpark, Amazon KDP"
+                    data-deliverables="Print-ready PDF (CMYK), High-res image files"
+                    data-tags='["Full Bleed","CMYK","IngramSpark","Photo Book"]'>
+                    <div class="port-thumb">
+                        <img src="images/portfolio/active-scaled.jpg" alt="Full-Picture Book Layout" loading="lazy">
+                    </div>
+                    <div class="port-body">
+                        <div class="port-cat">Interior Layout</div>
+                        <div class="port-title">Full-Picture Book Layout</div>
+                        <div class="port-desc">Coffee table books, photography, and illustrated titles. Image-first
+                            layouts with seamless bleed and print-perfect color.</div>
+                        <div class="port-foot">
+                            <span class="port-tag">Full Bleed</span><span class="port-tag">CMYK</span><span
+                                class="port-tag">IngramSpark</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="port-card fade-up" data-cat="interior" data-title="Graphics & Tables Layout"
+                    data-lb-cat="Interior Layout" data-emoji="📊" data-thumb="pt-3"
+                    data-img="images/portfolio/adsorpsi-scaled.jpg"
+                    data-desc="Technical and academic books with charts, diagrams, and tables — structured clearly across both print and digital. Footnotes, endnotes, indices, and cross-references handled with precision."
+                    data-tools="Adobe InDesign, Microsoft Excel (data import), LaTeX (if required)"
+                    data-platforms="Amazon KDP, IngramSpark, Springer, IEEE"
+                    data-deliverables="Print-ready PDF, ePub 3 (with accessible tables)"
+                    data-tags='["Tables","Infographics","Charts","KDP Ready"]'>
+                    <div class="port-thumb">
+                        <img src="images/portfolio/adsorpsi-scaled.jpg" alt="Graphics & Tables Layout" loading="lazy">
+                    </div>
+                    <div class="port-body">
+                        <div class="port-cat">Interior Layout</div>
+                        <div class="port-title">Graphics &amp; Tables Layout</div>
+                        <div class="port-desc">Technical and academic books with charts, diagrams, and tables —
+                            structured clearly across both print and digital formats.</div>
+                        <div class="port-foot">
+                            <span class="port-tag">Tables</span><span class="port-tag">Infographics</span><span
+                                class="port-tag">KDP Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="port-card fade-up" data-cat="interior" data-title="Children's Book Layout"
+                    data-lb-cat="Interior Layout" data-emoji="🎨" data-thumb="pt-4"
+                    data-img="images/portfolio/aktif-scaled.jpg"
+                    data-desc="Playful, color-rich spreads for young readers. Built for KDP's fixed-format and IngramSpark's full-color print workflow. Every spread is designed to delight both children and parents."
+                    data-tools="Adobe InDesign, Adobe Illustrator, Adobe Photoshop"
+                    data-platforms="Amazon KDP, IngramSpark" data-deliverables="Fixed-format ePub, Print-ready PDF"
+                    data-tags='["Fixed-Format","KDP Ready","Full Color","Picture Book"]'>
+                    <div class="port-thumb">
+                        <img src="images/portfolio/aktif-scaled.jpg" alt="Children's Book Layout" loading="lazy">
+                    </div>
+                    <div class="port-body">
+                        <div class="port-cat">Interior Layout</div>
+                        <div class="port-title">Children's Book Layout</div>
+                        <div class="port-desc">Playful, color-rich spreads for young readers. Built for KDP's
+                            fixed-format and IngramSpark's full-color print workflow.</div>
+                        <div class="port-foot">
+                            <span class="port-tag">Fixed-Format</span><span class="port-tag">KDP Ready</span><span
+                                class="port-tag">Full Color</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="port-card fade-up" data-cat="interior" data-title="Workbook & Journal Layout"
+                    data-lb-cat="Interior Layout" data-emoji="📓" data-thumb="pt-7"
+                    data-img="images/portfolio/abk-scaled.jpg"
+                    data-desc="Interactive workbooks, planners, and journals with fillable spaces, dotted grids, and consistent section dividers. Designed to function beautifully both in print and as low-ink KDP editions."
+                    data-tools="Adobe InDesign, Adobe Illustrator"
+                    data-platforms="Amazon KDP (Low Content), IngramSpark"
+                    data-deliverables="Print-ready PDF, Interior template file"
+                    data-tags='["Workbook","Planner","Low-Content","KDP"]'>
+                    <div class="port-thumb">
+                        <img src="images/portfolio/abk-scaled.jpg" alt="Workbook & Journal Layout" loading="lazy">
+                    </div>
+                    <div class="port-body">
+                        <div class="port-cat">Interior Layout</div>
+                        <div class="port-title">Workbook &amp; Journal Layout</div>
+                        <div class="port-desc">Interactive workbooks, planners, and journals with fillable spaces,
+                            dotted grids, and consistent section dividers — print-ready for KDP.</div>
+                        <div class="port-foot">
+                            <span class="port-tag">Workbook</span><span class="port-tag">Planner</span><span
+                                class="port-tag">Low-Content</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="port-card fade-up" data-cat="cover" data-title="Print & Digital Covers"
+                    data-lb-cat="Cover Design" data-emoji="📚" data-thumb="pt-5"
+                    data-img="images/portfolio/99-tips-nelajar-komputer-scaled.jpg"
+                    data-desc="Front, back, and spine designed to exact printer specs — KDP template, IngramSpark template, or any custom trim size. Delivered with bleed, safe zone, and high-res exports."
+                    data-tools="Adobe Photoshop, Adobe Illustrator, Adobe InDesign"
+                    data-platforms="Amazon KDP, IngramSpark, Lulu"
+                    data-deliverables="Print-ready PDF (with bleed), Flat cover PNG, 3D mockup"
+                    data-tags='["KDP Cover","IngramSpark","Spine Included","Full Wrap"]'>
+                    <div class="port-thumb">
+                        <img src="images/portfolio/99-tips-nelajar-komputer-scaled.jpg" alt="Print & Digital Covers"
+                            loading="lazy">
+                    </div>
+                    <div class="port-body">
+                        <div class="port-cat">Cover Design</div>
+                        <div class="port-title">Print &amp; Digital Covers</div>
+                        <div class="port-desc">Front, back, and spine formatted to exact printer specs — KDP template,
+                            IngramSpark template, or any custom trim size.</div>
+                        <div class="port-foot">
+                            <span class="port-tag">KDP Cover</span><span class="port-tag">IngramSpark</span><span
+                                class="port-tag">Spine Included</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="port-card fade-up" data-cat="cover" data-title="Series Cover Branding"
+                    data-lb-cat="Cover Design" data-emoji="🎭" data-thumb="pt-9"
+                    data-desc="Cohesive cover system for multi-book series. Consistent typography, color palette, and visual identity across all volumes — so readers instantly recognise your brand on any shelf."
+                    data-tools="Adobe Photoshop, Adobe Illustrator" data-platforms="Amazon KDP, IngramSpark, Smashwords"
+                    data-deliverables="Print-ready PDF per volume, Brand style guide PDF"
+                    data-tags='["Series","Brand Identity","Multi-volume","Full Bleed"]'>
+                    <div class="port-thumb pt-9">🎭</div>
+                    <div class="port-body">
+                        <div class="port-cat">Cover Design</div>
+                        <div class="port-title">Series Cover Branding</div>
+                        <div class="port-desc">Cohesive cover system for multi-book series — same typography, color
+                            palette, and visual identity across all volumes.</div>
+                        <div class="port-foot">
+                            <span class="port-tag">Series</span><span class="port-tag">Brand Identity</span><span
+                                class="port-tag">Multi-volume</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="port-card fade-up" data-cat="ebook" data-title="ePub & KDP Ebooks"
+                    data-lb-cat="Ebook Production" data-emoji="📱" data-thumb="pt-6"
+                    data-desc="Clean, reflowable ePub 3 with semantic markup, metadata, NCX/Nav, and WCAG accessibility built in. Validated with EPUBCheck. MOBI/KFX conversion included for Amazon."
+                    data-tools="Adobe InDesign, Sigil, Calibre, EPUBCheck"
+                    data-platforms="Amazon KDP, Apple Books, Draft2Digital, Smashwords, Google Play Books"
+                    data-deliverables="ePub 3 file, MOBI/KFX file, Validation report"
+                    data-tags='["ePub 3","MOBI/KFX","Amazon KDP","Accessible"]'>
+                    <div class="port-thumb pt-6">📱</div>
+                    <div class="port-body">
+                        <div class="port-cat">Ebook Production</div>
+                        <div class="port-title">ePub &amp; KDP Ebooks</div>
+                        <div class="port-desc">Reflowable ePub 3 with clean markup, metadata, and accessibility.
+                            Validated for Amazon KDP, Apple Books, and all major platforms.</div>
+                        <div class="port-foot">
+                            <span class="port-tag">ePub 3</span><span class="port-tag">MOBI/KFX</span><span
+                                class="port-tag">Amazon KDP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="port-card fade-up" data-cat="graphic" data-title="Custom Ornaments & Type"
+                    data-lb-cat="Graphic Assets" data-emoji="✦" data-thumb="pt-8"
+                    data-desc="Custom ornaments, chapter dividers, decorative drop caps, section icons, and infographics. Designed in vector and exported as SVG, EPS, or embedded directly in the InDesign layout."
+                    data-tools="Adobe Illustrator, Glyphs (font design), Adobe InDesign"
+                    data-platforms="Any — delivered as standalone files or integrated in layout"
+                    data-deliverables="SVG, EPS, OTF/TTF (if typeface), Embedded in layout"
+                    data-tags='["SVG / EPS","Ornaments","Drop Caps","Custom Type"]'>
+                    <div class="port-thumb pt-8">✦</div>
+                    <div class="port-body">
+                        <div class="port-cat">Graphic Assets</div>
+                        <div class="port-title">Custom Ornaments &amp; Type</div>
+                        <div class="port-desc">Custom ornaments, chapter dividers, icons, infographics, and typefaces —
+                            giving your book a visual identity no template can replicate.</div>
+                        <div class="port-foot">
+                            <span class="port-tag">SVG / EPS</span><span class="port-tag">OTF / TTF</span><span
+                                class="port-tag">Ornaments</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS MINI -->
+    <section id="testimonials"
+        style="padding: 5rem 0; background: var(--surface); border-top: 1px solid var(--border);">
+        <div class="wrap">
+            <div class="fade-up">
+                <div class="eyebrow">Client reviews</div>
+                <h2 class="sec-h">What clients say</h2>
+            </div>
+            <div class="testi-grid fade-up">
+
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">"I cannot recommend Nichal enough! He is an incredibly talented and
+                        professional book designer. From the very start, he understood exactly what I wanted."</p>
+                    <div class="testi-foot">
+                        <div class="testi-avatar">J</div>
+                        <div>
+                            <div class="testi-name">jh3153</div>
+                            <div class="testi-from">🇺🇸 United States</div>
+                        </div>
+                        <span class="testi-badge">Fiverr</span>
+                    </div>
+                </div>
+
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">"I've worked with many Fiverr artists. This gentleman is the BEST by far. His
+                        design exceeded my expectations. By a lot. SPEC-TACULAR!"</p>
+                    <div class="testi-foot">
+                        <div class="testi-avatar">J</div>
+                        <div>
+                            <div class="testi-name">johntoner</div>
+                            <div class="testi-from">🇺🇸 United States · 4× Repeat Client</div>
+                        </div>
+                        <span class="testi-badge">Fiverr</span>
+                    </div>
+                </div>
+
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">"Nichal did an excellent job. He worked very precisely, followed all layout
+                        instructions carefully, and was very responsive. Great structured workflow!"</p>
+                    <div class="testi-foot">
+                        <div class="testi-avatar">M</div>
+                        <div>
+                            <div class="testi-name">michaela_wolf</div>
+                            <div class="testi-from">🇩🇪 Germany</div>
+                        </div>
+                        <span class="testi-badge">Fiverr</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding: 5rem 0; background: var(--bg); border-top: 1px solid var(--border); text-align: center;">
+        <div class="wrap fade-up">
+            <div class="eyebrow eyebrow-c">Ready to start?</div>
+            <h2 class="sec-h" style="margin-bottom: 1rem;">Let's work on your book</h2>
+            <p class="sec-p" style="max-width: 480px; margin: 0 auto 2rem;">I respond within 24 hours and can start most
+                projects within 1–2 weeks.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="services.html" class="btn-outline">See pricing</a>
+                <a href="index.html#contact" class="btn-primary">Start a project →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="foot-logo">Nichal Zaki</span>
+        <div class="foot-links">
+            <a href="mailto:nichal.zaki@gmail.com">Email</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="services.html">Services</a>
+            <a href="#" target="_blank">Fiverr</a>
+        </div>
+        <span class="foot-copy">© 2026 Nichal Zaki</span>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true">
+        <div class="lb-box">
+            <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+            <div class="lb-thumb" id="lbThumb"></div>
+            <div class="lb-cat" id="lbCat"></div>
+            <div class="lb-title" id="lbTitle"></div>
+            <div class="lb-desc" id="lbDesc"></div>
+            <div class="lb-meta" id="lbMeta"></div>
+            <div class="lb-tags" id="lbTags"></div>
+            <div class="lb-cta">
+                <a href="index.html#contact" class="btn-primary">Start this project →</a>
+                <a href="services.html" class="btn-outline">See pricing</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/shared.js"></script>
+    <script>
+        /* ── Filter ── */
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('#portGrid .port-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const f = btn.dataset.filter;
+                cards.forEach(c => {
+                    const match = f === 'all' || c.dataset.cat === f;
+                    c.classList.toggle('hidden', !match);
+                });
+            });
+        });
+
+        /* ── Lightbox ── */
+        const overlay = document.getElementById('lbOverlay');
+        const lbClose = document.getElementById('lbClose');
+
+        function openLb(card) {
+            document.getElementById('lbCat').textContent = card.dataset.lbCat;
+            document.getElementById('lbTitle').textContent = card.dataset.title;
+            document.getElementById('lbDesc').textContent = card.dataset.desc;
+
+            const thumb = document.getElementById('lbThumb');
+            if (card.dataset.img) {
+                // Show real image in lightbox
+                thumb.innerHTML = `<img src="${card.dataset.img}" alt="${card.dataset.title}">`;
+                thumb.className = 'lb-thumb';
+            } else {
+                // Fallback to emoji + gradient
+                thumb.textContent = card.dataset.emoji;
+                thumb.className = 'lb-thumb ' + card.dataset.thumb;
+            }
+
+            const meta = document.getElementById('lbMeta');
+            meta.innerHTML = [
+                ['Tools', card.dataset.tools],
+                ['Platforms', card.dataset.platforms],
+                ['Deliverables', card.dataset.deliverables],
+            ].map(([k, v]) => v ? `<div class="lb-meta-row"><strong>${k}</strong>${v}</div>` : '').join('');
+
+            const tags = JSON.parse(card.dataset.tags || '[]');
+            document.getElementById('lbTags').innerHTML = tags.map(t => `<span class="pbadge">${t}</span>`).join('');
+
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => openLb(card));
+        });
+
+        function closeLb() {
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        lbClose.addEventListener('click', closeLb);
+        overlay.addEventListener('click', e => { if (e.target === overlay) closeLb(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+    </script>
+</body>
+
+</html>
