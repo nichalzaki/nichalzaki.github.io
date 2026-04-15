@@ -233,6 +233,7 @@ nav {
   top: var(--nh);
   left: 0;
   right: 0;
+  width: 100%;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   padding: 1.25rem 1.5rem 1.5rem;
@@ -240,6 +241,9 @@ nav {
   flex-direction: column;
   gap: .25rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, .08);
+  height: auto;
+  max-height: calc(100vh - var(--nh));
+  overflow-y: auto;
 }
 
 .nav-mobile.open {
