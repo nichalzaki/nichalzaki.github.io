@@ -1,0 +1,52 @@
+---
+layout: default
+---
+{%- assign works = site.works | sort: 'year', 'last' | reverse -%}
+{%- assign idx = 0 -%}
+{%- for w in works -%}{%- if w.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+{%- assign prev_i = idx | minus: 1 -%}
+{%- assign next_i = idx | plus: 1 -%}
+
+<article class="work wrap">
+  <p class="crumbs"><a href="{{ '/' | relative_url }}">Index</a> / <a href="{{ '/#work' | relative_url }}">Work</a></p>
+
+  <header class="work__head">
+    <p class="label">{% if page.genre %}{{ page.genre }}{% endif %}{% if page.genre and page.year %} · {% endif %}{{ page.year }}</p>
+    <h1 class="work__title">{{ page.title }}</h1>
+    {%- if page.author %}<p class="work__author">{{ page.author }}</p>{% endif %}
+  </header>
+
+  <div class="work__grid">
+    <div class="work__cover rv">
+      {%- if page.cover and page.cover != "" -%}
+        <img src="{{ page.cover | relative_url }}" alt="Cover of {{ page.title | escape }}">
+      {%- else -%}
+        {% include typecover.html title=page.title author=page.author genre=page.genre variant=idx %}
+      {%- endif -%}
+    </div>
+
+    <div class="work__info">
+      <dl class="specs rv">
+        {%- if page.role and page.role.size > 0 %}<div><dt>Role</dt><dd>{{ page.role | join: ', ' }}</dd></div>{% endif %}
+        {%- if page.client %}<div><dt>Client</dt><dd>{{ page.client }}</dd></div>{% endif %}
+        {%- if page.trim %}<div><dt>Trim size</dt><dd>{{ page.trim }}</dd></div>{% endif %}
+        {%- if page.pages %}<div><dt>Pages</dt><dd>{{ page.pages }}</dd></div>{% endif %}
+        {%- if page.platform %}<div><dt>Platform</dt><dd>{{ page.platform }}</dd></div>{% endif %}
+        {%- if page.tools %}<div><dt>Tools</dt><dd>{{ page.tools }}</dd></div>{% endif %}
+        {%- if page.link %}<div><dt>Link</dt><dd><a class="ul" href="{{ page.link }}" target="_blank" rel="noopener">View ↗</a></dd></div>{% endif %}
+      </dl>
+      {%- if content != blank %}<div class="prose rv">{{ content }}</div>{% endif %}
+    </div>
+  </div>
+
+  {%- if page.gallery and page.gallery.size > 0 %}
+  <div class="gallery">
+    {%- for g in page.gallery %}<figure class="rv"><img src="{{ g | relative_url }}" alt="{{ page.title | escape }}, image {{ forloop.index }}" loading="lazy"></figure>{% endfor %}
+  </div>
+  {%- endif %}
+
+  <nav class="pager" aria-label="More work">
+    {%- if prev_i >= 0 %}{% assign p = works[prev_i] %}<a class="row row--link" href="{{ p.url | relative_url }}"><span class="row__no">← Prev</span><span class="row__title">{{ p.title }}</span></a>{% endif %}
+    {%- if next_i < works.size %}{% assign q = works[next_i] %}<a class="row row--link" href="{{ q.url | relative_url }}"><span class="row__no">Next →</span><span class="row__title">{{ q.title }}</span></a>{% endif %}
+  </nav>
+</article>

@@ -1,0 +1,7 @@
+{%- comment -%} Cover tipografis: dipakai kalau karya belum punya gambar cover. {%- endcomment -%}
+{%- assign v = include.variant | default: 0 | modulo: 3 -%}
+<div class="tcover tcover--{{ v }}" aria-hidden="true">
+  <span class="tcover__top">{{ include.genre | default: 'Book' }}</span>
+  <span class="tcover__title">{{ include.title }}</span>
+  <span class="tcover__author">{{ include.author }}</span>
+</div>

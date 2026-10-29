@@ -1,0 +1,27 @@
+---
+layout: default
+title: Work
+---
+{%- assign works = site.works | sort: 'year', 'last' | reverse -%}
+<section class="wrap page-head">
+  <p class="crumbs"><a href="{{ '/' | relative_url }}">Index</a> / Work</p>
+  <h1 class="hero__title hero__title--sm">All <em>work.</em></h1>
+</section>
+<section class="wrap">
+  {%- if works.size > 0 %}
+  <div class="shelf">
+    {%- for w in works %}
+    <a class="shelf__item rv" href="{{ w.url | relative_url }}">
+      <div class="shelf__cover">
+        {%- if w.cover and w.cover != "" %}<img src="{{ w.cover | relative_url }}" alt="" loading="lazy">{% else %}{% include typecover.html title=w.title author=w.author genre=w.genre variant=forloop.index0 %}{% endif %}
+      </div>
+      <p class="shelf__meta"><span>{{ w.year }}</span><span>{{ w.role | join: ' · ' }}</span></p>
+      <p class="shelf__title">{{ w.title }}</p>
+      <p class="shelf__author">{{ w.author }}</p>
+    </a>
+    {%- endfor %}
+  </div>
+  {%- else %}
+  <p class="empty">The portfolio is being put together. In the meantime, <a class="ul" href="#contact">ask me for samples</a>.</p>
+  {%- endif %}
+</section>

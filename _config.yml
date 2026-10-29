@@ -1,0 +1,33 @@
+# ─────────────────────────────────────────────
+#  Pengaturan teknis Jekyll. Isi situs diubah
+#  lewat Pages CMS (_data/*.yml dan _works/).
+# ─────────────────────────────────────────────
+title: Nichal Zaki
+url: "https://nichalzaki.github.io"
+baseurl: ""
+lang: en
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+collections:
+  works:
+    output: true
+    permalink: /work/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: works
+    values:
+      layout: work
+
+exclude:
+  - _archive
+  - "Claude outputs"
+  - PANDUAN-EDIT.md
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .pages.yml

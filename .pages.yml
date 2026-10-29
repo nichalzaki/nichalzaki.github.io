@@ -1,0 +1,267 @@
+# Konfigurasi Pages CMS — https://pagescms.org/docs/
+# Menentukan formulir apa saja yang muncul di panel admin.
+
+media:
+  input: assets/uploads
+  output: /assets/uploads
+  rename: safe
+  categories: [image]
+
+content:
+  # ───────────── KARYA ─────────────
+  - name: works
+    label: Karya
+    type: collection
+    path: _works
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    exclude: [.gitkeep]
+    view:
+      fields: [title, year, published]
+      primary: title
+      sort: [year, title]
+      default:
+        sort: year
+        order: desc
+    fields:
+      - name: title
+        label: Judul buku
+        type: string
+        required: true
+      - name: author
+        label: Penulis
+        type: string
+      - name: year
+        label: Tahun
+        type: number
+        required: true
+      - name: genre
+        label: Genre
+        type: select
+        options:
+          values: [Academic, Islamic, Education, Children, Workbook, Fiction, Non-fiction, Science, Technology, Other]
+      - name: role
+        label: Peran saya
+        type: select
+        options:
+          multiple: true
+          values: [Interior, Cover, Ebook, Graphics, Editing]
+      - name: cover
+        label: Gambar cover (opsional — kalau kosong, cover tipografis dibuat otomatis)
+        type: image
+      - name: gallery
+        label: Galeri spread / halaman isi (opsional)
+        type: image
+        options:
+          multiple:
+            max: 12
+      - name: client
+        label: Klien / penerbit
+        type: string
+      - name: trim
+        label: Ukuran buku (mis. 15,5 × 23 cm)
+        type: string
+      - name: pages
+        label: Jumlah halaman
+        type: string
+      - name: platform
+        label: Platform / cetak (mis. KDP, IngramSpark, offset)
+        type: string
+      - name: tools
+        label: Software
+        type: string
+      - name: link
+        label: Tautan (toko buku / Google Books, opsional)
+        type: string
+      - name: published
+        label: Tampilkan di situs
+        type: boolean
+        default: true
+      - name: body
+        label: Cerita proyek (opsional)
+        type: rich-text
+
+  # ───────────── BERANDA ─────────────
+  - name: home
+    label: Isi beranda
+    type: file
+    path: _data/home.yml
+    format: yaml
+    fields:
+      - name: headline
+        label: Judul besar (tulis *kata* di antara bintang untuk stabilo hijau; Enter = baris baru)
+        type: text
+      - name: intro
+        label: Kalimat pembuka
+        type: text
+      - name: working_with
+        label: Bekerja dengan
+        type: string
+      - name: stats
+        label: Angka
+        type: object
+        list:
+          max: 4
+          collapsible:
+            collapsed: true
+            summary: "{value} {label}"
+        fields:
+          - name: value
+            label: Angka (mis. 300+)
+            type: string
+          - name: label
+            label: Keterangan
+            type: string
+      - name: services
+        label: Layanan
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: Nama layanan
+            type: string
+          - name: summary
+            label: Ringkasan singkat
+            type: string
+          - name: price
+            label: Harga (mis. from $49 / on request)
+            type: string
+          - name: details
+            label: Rincian (satu poin per baris)
+            type: string
+            list: true
+          - name: platforms
+            label: Platform
+            type: string
+      - name: packages
+        label: Paket harga
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name} — {price}"
+        fields:
+          - name: name
+            label: Nama paket
+            type: string
+          - name: price
+            label: Harga
+            type: string
+          - name: scope
+            label: Cakupan
+            type: string
+          - name: featured
+            label: Tandai "Most popular"
+            type: boolean
+          - name: features
+            label: Isi paket
+            type: string
+            list: true
+      - name: packages_note
+        label: Catatan di bawah paket
+        type: text
+      - name: process
+        label: Alur kerja
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: Tahap
+            type: string
+          - name: text
+            label: Penjelasan
+            type: text
+      - name: testimonials
+        label: Testimoni
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - name: quote
+            label: Kutipan
+            type: text
+          - name: name
+            label: Nama klien
+            type: string
+          - name: from
+            label: Asal / keterangan
+            type: string
+      - name: about
+        label: Tentang saya (pisahkan paragraf dengan baris kosong)
+        type: text
+      - name: tools
+        label: Software
+        type: string
+        list: true
+      - name: faq
+        label: FAQ
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{q}"
+        fields:
+          - name: q
+            label: Pertanyaan
+            type: string
+          - name: a
+            label: Jawaban
+            type: text
+      - name: contact_title
+        label: Judul kontak (pakai *bintang* untuk stabilo)
+        type: text
+      - name: contact_text
+        label: Teks kontak
+        type: text
+
+  # ───────────── PENGATURAN ─────────────
+  - name: settings
+    label: Pengaturan situs
+    type: file
+    path: _data/settings.yml
+    format: yaml
+    fields:
+      - name: name
+        label: Nama
+        type: string
+      - name: role
+        label: Profesi (muncul di judul tab browser)
+        type: string
+      - name: location
+        label: Lokasi
+        type: string
+      - name: timezone
+        label: Zona waktu
+        type: string
+      - name: email
+        label: E-mail
+        type: string
+      - name: whatsapp
+        label: Nomor WhatsApp (format 62…, tanpa + atau spasi; kosongkan untuk menyembunyikan tombol)
+        type: string
+      - name: whatsapp_message
+        label: Pesan awal WhatsApp
+        type: string
+      - name: fiverr
+        label: Tautan Fiverr (kosongkan untuk menyembunyikan tombol)
+        type: string
+      - name: accent
+        label: Warna aksen
+        type: select
+        options:
+          values:
+            - name: green
+              label: Hijau neon
+            - name: blue
+              label: Biru neon
+      - name: meta_description
+        label: Deskripsi untuk Google (± 150 karakter)
+        type: text

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nichal Zaki — Book Designer & Layouter</title>
+  <meta name="description"
+    content="Professional book layout, typesetting, cover design, and ebook production. Amazon KDP & IngramSpark ready. Based in Indonesia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">nichal<b>zaki</b></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-tools">
+      <button class="nav-icon-btn" id="fontToggle" title="Toggle font size">Aa</button>
+      <button class="nav-icon-btn" id="themeToggle" title="Toggle dark mode">☀</button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <button class="nav-cta" onclick="smoothGo('contact')">Hire me</button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <nav class="nav-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <!-- Mouse parallax letters -->
+    <span class="fl fl-a" data-speed="14">A</span>
+    <span class="fl fl-g" data-speed="22">g</span>
+    <span class="fl fl-b" data-speed="9">B</span>
+    <span class="fl fl-amp" data-speed="18">&amp;</span>
+    <span class="fl fl-p" data-speed="28">p</span>
+    <span class="fl fl-t" data-speed="16">T</span>
+    <span class="fl fl-r" data-speed="32">R</span>
+
+    <div class="hero-inner">
+      <div class="hero-tag">Book Designer &amp; Layouter · Semarang, Indonesia</div>
+      <h1>
+        No more <span class="word-ugly">ugly</span><br>
+        layout for<br>
+        your <span class="word-books">books.</span>
+      </h1>
+      <p class="hero-sub">
+        Professional typesetting, cover design, and ebook production —
+        formatted to Amazon KDP, IngramSpark, and every major platform spec.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="smoothGo('contact')">Start a project →</button>
+        <a class="btn-outline" href="portfolio.html">See my work</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>300+</b><span>Books published</span></div>
+        <div class="stat"><b>12+</b><span>Years of craft</span></div>
+        <div class="stat"><b>30+</b><span>Repeat clients</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES TEASER -->
+  <section id="services">
+    <span class="sec-fl" data-scroll-speed="0.14"
+      style="font-size:28vw;bottom:-8%;right:-4%;font-style:italic;">§</span>
+    <span class="sec-fl" data-scroll-speed="0.08"
+      style="font-size:10vw;top:8%;left:3%;font-style:italic;opacity:.025;">Ss</span>
+
+    <div class="wrap">
+      <div class="fade-up">
+        <div class="eyebrow">What I do</div>
+        <h2 class="sec-h">Services</h2>
+        <p class="sec-p">Every deliverable is print-ready and platform-ready — built to exact spec for Amazon KDP,
+          IngramSpark, Draft2Digital, and beyond.</p>
+      </div>
+      <div class="services-grid fade-up">
+
+        <div class="svc">
+          <div class="svc-num">01</div>
+          <div class="svc-icon">📖</div>
+          <div class="svc-title">Book Interior Design</div>
+          <div class="svc-desc">From dense academic manuscripts to full-color children's books — every page typeset with
+            precision, clean margins, and typography that makes reading effortless.</div>
+          <div class="svc-platforms">
+            <span class="pbadge">Amazon KDP</span>
+            <span class="pbadge">IngramSpark</span>
+            <span class="pbadge">Draft2Digital</span>
+            <span class="pbadge">Print-on-Demand</span>
+          </div>
+        </div>
+
+        <div class="svc">
+          <div class="svc-num">02</div>
+          <div class="svc-icon">🎨</div>
+          <div class="svc-title">Cover Design</div>
+          <div class="svc-desc">Front, back, and spine covers built for print-on-demand. Delivered with correct bleed,
+            safe zones, and resolution — ready to upload without a single revision request.</div>
+          <div class="svc-platforms">
+            <span class="pbadge">Amazon KDP</span>
+            <span class="pbadge">IngramSpark</span>
+            <span class="pbadge">Print + Digital</span>
+            <span class="pbadge">Full Bleed</span>
+          </div>
+        </div>
+
+        <div class="svc">
+          <div class="svc-num">03</div>
+          <div class="svc-icon">📱</div>
+          <div class="svc-title">Ebook Production</div>
+          <div class="svc-desc">Clean, reflowable ePub 3 and MOBI files with semantic markup, metadata, and
+            accessibility built in. Validated and ready for every major ebook platform.</div>
+          <div class="svc-platforms">
+            <span class="pbadge">Amazon KDP</span>
+            <span class="pbadge">Apple Books</span>
+            <span class="pbadge">Draft2Digital</span>
+            <span class="pbadge">Smashwords</span>
+          </div>
+        </div>
+
+        <div class="svc">
+          <div class="svc-num">04</div>
+          <div class="svc-icon">✦</div>
+          <div class="svc-title">Graphic Assets &amp; Type</div>
+          <div class="svc-desc">Custom ornaments, chapter dividers, icons, infographics, and typefaces — designed to
+            give your book a visual identity no template can replicate.</div>
+          <div class="svc-platforms">
+            <span class="pbadge">SVG / EPS</span>
+            <span class="pbadge">OTF / TTF</span>
+            <span class="pbadge">Ornaments</span>
+            <span class="pbadge">Infographics</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="sec-cta fade-up">
+        <a href="services.html" class="btn-ghost">View all packages &amp; pricing →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO TEASER -->
+  <section id="portfolio">
+    <span class="sec-fl" data-scroll-speed="0.18" style="font-size:32vw;top:-10%;left:-5%;font-style:italic;">f</span>
+    <span class="sec-fl" data-scroll-speed="0.1"
+      style="font-size:12vw;bottom:5%;right:4%;font-style:italic;opacity:.028;">Pp</span>
+
+    <div class="wrap">
+      <div class="fade-up">
+        <div class="eyebrow">Selected work</div>
+        <h2 class="sec-h">Portfolio</h2>
+        <p class="sec-p">A few highlights from 300+ books — all delivered print-ready for global self-publishing
+          platforms.</p>
+      </div>
+      <div class="port-grid fade-up">
+
+        <a href="portfolio.html" class="port-card">
+          <div class="port-thumb pt-1">📄</div>
+          <div class="port-body">
+            <div class="port-cat">Interior Layout</div>
+            <div class="port-title">Text-Heavy Book Layout</div>
+            <div class="port-desc">Novels, academic texts, and reference books. Dense copy handled with precise grids
+              and optimal readability at any page count.</div>
+            <div class="port-foot">
+              <span class="port-tag">InDesign</span>
+              <span class="port-tag">KDP Ready</span>
+              <span class="port-tag">IngramSpark</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="portfolio.html" class="port-card">
+          <div class="port-thumb pt-4">🎨</div>
+          <div class="port-body">
+            <div class="port-cat">Interior Layout</div>
+            <div class="port-title">Children's Book Layout</div>
+            <div class="port-desc">Playful, color-rich spreads for young readers. Built for KDP's fixed-format and
+              IngramSpark's full-color print workflow.</div>
+            <div class="port-foot">
+              <span class="port-tag">Fixed-Format</span>
+              <span class="port-tag">KDP Ready</span>
+              <span class="port-tag">Full Color</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="portfolio.html" class="port-card">
+          <div class="port-thumb pt-5">📚</div>
+          <div class="port-body">
+            <div class="port-cat">Cover Design</div>
+            <div class="port-title">Print &amp; Digital Covers</div>
+            <div class="port-desc">Front, back, and spine formatted to exact printer specs — KDP template, IngramSpark
+              template, or any custom trim size.</div>
+            <div class="port-foot">
+              <span class="port-tag">KDP Cover</span>
+              <span class="port-tag">IngramSpark</span>
+              <span class="port-tag">Spine Included</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+      <div class="sec-cta fade-up">
+        <a href="portfolio.html" class="btn-ghost">View full portfolio →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <span class="sec-fl" data-scroll-speed="0.12" style="font-size:36vw;top:-12%;right:-6%;opacity:.032;">"</span>
+    <span class="sec-fl" data-scroll-speed="0.2"
+      style="font-size:14vw;bottom:0%;left:2%;opacity:.024;font-style:italic;">❧</span>
+
+    <div class="wrap">
+      <div class="fade-up">
+        <div class="eyebrow">Client reviews</div>
+        <h2 class="sec-h">What clients say</h2>
+        <p class="sec-p">All reviews verified on Fiverr — from clients in the US, Europe, and beyond.</p>
+      </div>
+      <div class="testi-grid fade-up">
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I cannot recommend Nichal enough! He is an incredibly talented and professional book
+            designer. From the very start, he understood exactly what I wanted and turned my ideas into a beautiful,
+            polished book that truly exceeded my expectations."</p>
+          <div class="testi-foot">
+            <div class="testi-avatar">J</div>
+            <div>
+              <div class="testi-name">jh3153</div>
+              <div class="testi-from">🇺🇸 United States</div>
+            </div>
+            <span class="testi-badge">Fiverr</span>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I've worked with many Fiverr artists. This gentleman is the BEST by far. His design
+            exceeded my expectations. By a lot. SPEC-TACULAR — this guy is fantastic!"</p>
+          <div class="testi-foot">
+            <div class="testi-avatar">J</div>
+            <div>
+              <div class="testi-name">johntoner</div>
+              <div class="testi-from">🇺🇸 United States · 4× Repeat Client</div>
+            </div>
+            <span class="testi-badge">Fiverr</span>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Nichal did an excellent job. He worked very precisely, followed all layout instructions
+            carefully, and was very responsive. What I especially appreciated was his structured workflow, clean file
+            packaging, and his willingness to fine-tune details until everything looked technically and visually
+            balanced."</p>
+          <div class="testi-foot">
+            <div class="testi-avatar">M</div>
+            <div>
+              <div class="testi-name">michaela_wolf</div>
+              <div class="testi-from">🇩🇪 Germany</div>
+            </div>
+            <span class="testi-badge">Fiverr</span>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"He's fantastic! And so patient with fixes — did a terrific job. Very easy to work with
+            and available. He's also FAST! He also has a very good grasp of English and exactly what you need to move
+            your book forward."</p>
+          <div class="testi-foot">
+            <div class="testi-avatar">C</div>
+            <div>
+              <div class="testi-name">clarissajacobso</div>
+              <div class="testi-from">🇺🇸 United States · Repeat Client</div>
+            </div>
+            <span class="testi-badge">Fiverr</span>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Nichal was amazing to work with! Very detail oriented and will make sure that he
+            understands all the requirements. Very skillful with Adobe InDesign. His communication was above and
+            beyond!"</p>
+          <div class="testi-foot">
+            <div class="testi-avatar">P</div>
+            <div>
+              <div class="testi-name">pavness</div>
+              <div class="testi-from">🇺🇸 United States</div>
+            </div>
+            <span class="testi-badge">Fiverr</span>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Professionista serio e competente molto vicino alle esigenze del cliente. Mi sono
+            trovato davvero bene."</p>
+          <div class="testi-foot">
+            <div class="testi-avatar">S</div>
+            <div>
+              <div class="testi-name">simone_ditunno</div>
+              <div class="testi-from">🇮🇹 Italy</div>
+            </div>
+            <span class="testi-badge">Fiverr</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <span class="sec-fl" data-scroll-speed="0.16"
+      style="font-size:30vw;bottom:-10%;right:-6%;font-style:italic;">@</span>
+    <span class="sec-fl" data-scroll-speed="0.09"
+      style="font-size:12vw;top:6%;left:2%;font-style:italic;opacity:.022;">Cc</span>
+
+    <div class="wrap">
+      <div class="fade-up">
+        <div class="eyebrow">Get in touch</div>
+        <h2 class="sec-h">Start a project</h2>
+      </div>
+      <div class="contact-grid fade-up">
+
+        <div>
+          <p style="font-size:.9375rem;color:var(--mid);line-height:1.85;margin-top:1.5rem">
+            Tell me about your book. I respond within 24 hours and can start most projects within 1–2 weeks.
+          </p>
+          <div class="contact-meta">
+            <div class="cmeta">
+              <div class="cmeta-icon">✉</div>nichal.zaki@gmail.com
+            </div>
+            <div class="cmeta">
+              <div class="cmeta-icon">📍</div>Semarang, Indonesia · GMT+7
+            </div>
+            <div class="cmeta">
+              <div class="cmeta-icon">🌍</div>Available for international projects
+            </div>
+          </div>
+        </div>
+
+        <div class="form">
+          <div class="form-row">
+            <div class="field">
+              <label>Name</label>
+              <input type="text" id="f-name" placeholder="Your name" />
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input type="email" id="f-email" placeholder="your@email.com" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Project type</label>
+            <select id="f-type">
+              <option value="">Select a service...</option>
+              <option>Book interior design</option>
+              <option>Cover design</option>
+              <option>Ebook production (ePub / KDP)</option>
+              <option>Graphic assets &amp; type design</option>
+              <option>Full package (interior + cover + ebook)</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>About your project</label>
+            <textarea id="f-msg" placeholder="Genre, word count, trim size, timeline, budget..."></textarea>
+          </div>
+          <p class="form-note">Clicking the button will open WhatsApp with your message pre-filled — just press Send.
+          </p>
+          <button class="btn-wa" onclick="sendToWhatsApp()">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            Send via WhatsApp
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="foot-logo">Nichal Zaki</span>
+    <div class="foot-links">
+      <a href="mailto:nichal.zaki@gmail.com">Email</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="#" target="_blank">Fiverr</a>
+    </div>
+    <span class="foot-copy">© 2026 Nichal Zaki</span>
+  </footer>
+
+  <script src="js/shared.js"></script>
+</body>
+
+</html>

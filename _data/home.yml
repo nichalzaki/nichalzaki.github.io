@@ -1,0 +1,139 @@
+# Teks di antara tanda bintang (*seperti ini*) diberi stabilo warna aksen.
+headline: "Book layout,\nset *properly.*"
+intro: Typesetting, cover design and ebook production for academic, Islamic and educational books, print-ready for Amazon KDP, IngramSpark and local printers.
+working_with: Authors, publishers, universities
+
+stats:
+  - value: "300+"
+    label: books set
+  - value: "12+"
+    label: years of craft
+  - value: "30+"
+    label: repeat clients
+  - value: "US · EU · AU"
+    label: clients worldwide
+
+services:
+  - title: Interior layout
+    summary: Academic, workbook, children's
+    price: from $49
+    details:
+      - Custom baseline grid and margins for any trim size
+      - "Typography system: body, headings, captions, footnotes"
+      - Running heads, page numbers and table of contents
+      - Widow and orphan control, careful hyphenation
+      - Image placement and CMYK colour management
+      - Preflight check and print-ready PDF
+    platforms: Amazon KDP · IngramSpark · Draft2Digital · Print-on-demand
+  - title: Cover design
+    summary: Front, spine and back to template
+    price: on request
+    details:
+      - Front, back and spine as one design
+      - Correct bleed, safe zone and 300 dpi resolution
+      - KDP cover calculator, IngramSpark template or custom spec
+      - Print-ready PDF, flat PNG and 3D mockup
+      - Up to 3 rounds of revisions
+    platforms: Amazon KDP · IngramSpark · Print + digital
+  - title: Ebook / ePub 3
+    summary: Kindle, Apple Books, Google Play
+    price: on request
+    details:
+      - Clean semantic HTML markup
+      - Metadata (title, author, ISBN, language, publisher)
+      - Working TOC, navigation and cover image
+      - Accessibility markup
+      - EPUBCheck validated
+      - Kindle-ready file for Amazon KDP
+    platforms: Amazon KDP · Apple Books · Draft2Digital · Google Play Books
+  - title: Graphic assets & type
+    summary: Ornaments, dividers, infographics
+    price: on request
+    details:
+      - Decorative ornaments and section dividers (SVG / EPS)
+      - Chapter opener illustrations or icons
+      - Infographics, charts and diagrams for print and web
+      - Custom display type (OTF / TTF)
+    platforms: SVG · EPS · OTF · TTF
+
+packages_note: All packages include print-ready PDF. Cover design and ebook conversion are available as add-ons.
+packages:
+  - name: Basic
+    price: $49
+    scope: Up to 20,000 words · 1 trim size
+    featured: false
+    features:
+      - Interior layout (print PDF)
+      - Standard text-only layout
+      - TOC, running heads, page numbers
+      - Up to 2 revisions
+      - Delivery in 5 business days
+  - name: Standard
+    price: $129
+    scope: Up to 60,000 words · 2 trim sizes
+    featured: true
+    features:
+      - Everything in Basic
+      - Up to 20 images or figures
+      - Custom typography system
+      - Up to 4 revisions
+      - ePub 3 / Kindle ebook file
+      - Delivery in 7 business days
+  - name: Premium
+    price: $249
+    scope: Unlimited pages · full package
+    featured: false
+    features:
+      - Everything in Standard
+      - Unlimited images and tables
+      - Unlimited revisions
+      - InDesign source file (INDD)
+      - Preflight and validation report
+      - Delivery in 10 business days
+
+process:
+  - title: Discovery
+    text: We go through genre, readers, trim size, platform and visual references before anything is laid out.
+  - title: Design & layout
+    text: A custom type system and grid, then every page set by hand, with widows, orphans, spacing and image flow handled.
+  - title: Review & revisions
+    text: You get a proof PDF and we refine it together. Revisions are included, not charged per change.
+  - title: Export & QA
+    text: Final files are preflighted, validated and exported to your platform's exact spec, ready to upload.
+
+testimonials:
+  - quote: I've worked with many Fiverr artists. This gentleman is the best by far. His design exceeded my expectations. By a lot.
+    name: johntoner
+    from: United States · 4× repeat client
+  - quote: He worked very precisely, followed all layout instructions carefully, and was very responsive. I especially appreciated his structured workflow and clean file packaging.
+    name: michaela_wolf
+    from: Germany
+  - quote: He's fantastic, and so patient with fixes. Very easy to work with and available. He's also fast!
+    name: clarissajacobso
+    from: United States · repeat client
+  - quote: From the very start, he understood exactly what I wanted and turned my ideas into a beautiful, polished book.
+    name: jh3153
+    from: United States
+
+about: |
+  I've spent more than a decade on the space between letters, the rhythm of a paragraph, and the quiet structure that lets a reader forget they're reading a book.
+
+  I also run Penerbit Alinea, a small academic and Islamic press in Semarang, so I know what printers, platforms and publishers expect from a file. Every project has the same goal: a book that sits comfortably next to any traditionally published title.
+tools: [Adobe InDesign, Illustrator, Photoshop, Affinity Publisher, Acrobat Pro, Sigil, EPUBCheck]
+
+faq:
+  - q: What file formats do you accept?
+    a: Word (.docx), Google Docs, RTF and plain text. For image-heavy books, please send images as high-resolution JPG or PNG (300 dpi minimum).
+  - q: How long does a project take?
+    a: Basic projects take 3–5 business days. Standard and Premium take 7–14 days depending on page count. Rush delivery (24–72h) is available for an extra fee.
+  - q: Do you guarantee KDP / IngramSpark approval?
+    a: Every file is preflighted to platform specs. If a file is rejected because of a layout issue on my side, I fix it at no charge.
+  - q: Can I see a sample before I commit?
+    a: Yes. I can lay out a 2–5 page sample from your manuscript so you can see the look and feel first.
+  - q: What if I need more revisions than included?
+    a: One revision round covers as many changes as you need. Extra rounds beyond the limit are billed at a flat rate.
+  - q: Do you sign an NDA?
+    a: Yes. Your manuscript stays confidential and is never shared with third parties.
+
+contact_title: "Have a manuscript?\n*Let's talk.*"
+contact_text: I reply within 24 hours and can start most projects within 1–2 weeks.

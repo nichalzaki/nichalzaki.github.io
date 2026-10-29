@@ -1,0 +1,32 @@
+{%- assign s = site.data.settings -%}
+{%- assign h = site.data.home -%}
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact__grid">
+      <div class="contact__main">
+        <p class="label label--dark">Contact</p>
+        <h2 class="contact__title rv">{{ h.contact_title | markdownify | remove: '<p>' | remove: '</p>' | strip | newline_to_br }}</h2>
+        <a class="contact__mail rv" href="mailto:{{ s.email }}">{{ s.email }}</a>
+      </div>
+      <div class="contact__side rv">
+        <p>{{ h.contact_text }}</p>
+        <div class="btns">
+          {%- if s.whatsapp != blank %}
+          <a class="btn btn--acc" href="https://wa.me/{{ s.whatsapp }}?text={{ s.whatsapp_message | url_encode }}" target="_blank" rel="noopener">WhatsApp <span aria-hidden="true">→</span></a>
+          {%- endif %}
+          {%- if s.fiverr != blank %}
+          <a class="btn btn--line" href="{{ s.fiverr }}" target="_blank" rel="noopener">Fiverr <span aria-hidden="true">↗</span></a>
+          {%- endif %}
+        </div>
+        <dl class="contact__meta">
+          <div><dt>Based in</dt><dd>{{ s.location }}</dd></div>
+          <div><dt>Time zone</dt><dd>{{ s.timezone }}</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="contact__foot">
+      <span>© <span id="yr">{{ site.time | date: '%Y' }}</span> {{ s.name }}</span>
+      <a href="#top" id="toTop">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
